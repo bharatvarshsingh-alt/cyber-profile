@@ -448,20 +448,7 @@ const jobObserver = new IntersectionObserver((entries) => {
 jobSections.forEach(section => jobObserver.observe(section));
 </script>
 
-  <script>
-const jobSections = document.querySelectorAll('.company-section');
-
-const jobObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
-
-jobSections.forEach(section => jobObserver.observe(section));
-</script>
-<script>
+ <script>
 const jobSections = document.querySelectorAll('.company-section');
 
 jobSections.forEach((section, index) => {
@@ -483,6 +470,7 @@ const jobObserver = new IntersectionObserver((entries) => {
 
 jobSections.forEach(section => jobObserver.observe(section));
 </script>
+
 
 
 </body>
