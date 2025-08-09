@@ -17,6 +17,7 @@
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s ease-out;
+    background-color: #ffffff; /* ✅ Set light background */
 }
 
 .company-section.reverse {
