@@ -351,6 +351,20 @@ h2 {
 </section>
 
 <!-- Scripts -->
+    // Animate career journey items when they scroll into view
+const journeyItems = document.querySelectorAll('.journey-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.4 });
+
+journeyItems.forEach(item => {
+  observer.observe(item);
+});
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -410,20 +424,7 @@ function onScrollCheck() {
 window.addEventListener('scroll', onScrollCheck);
 
 </script>
-  // Animate career journey items when they scroll into view
-const journeyItems = document.querySelectorAll('.journey-item');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.4 });
-
-journeyItems.forEach(item => {
-  observer.observe(item);
-});
 
 </body>
 </html>
