@@ -4,163 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maharaj Sood | Cybersecurity Professional</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: #1e1e2f;
-      color: #fff;
-      padding: 80px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.8em;
-    }
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
-    nav {
-      background: #007BFF;
-      padding: 15px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #007BFF;
-      margin-bottom: 20px;
-    }
-    ul {
-      list-style: disc inside;
-    }
-    .contact a {
-      color: #007BFF;
-      text-decoration: none;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1e1e2f;
-      color: white;
-      margin-top: 40px;
-    }
+    body { font-family: 'Roboto', sans-serif; margin:0; background-color:#f9f9f9; color:#333; }
+    header { text-align:center; padding:60px 20px; background:white; }
+    header img { width:160px; height:160px; border-radius:50%; box-shadow:0 0 15px rgba(0,123,255,0.5); object-fit:cover; }
+    header h1 { font-family:'Poppins', sans-serif; margin-top:20px; color:#007BFF; }
+    header h2 { font-weight:normal; color:#555; }
+    nav { text-align:center; padding:15px; background:#007BFF; }
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    section { max-width:1000px; margin:auto; padding:40px 20px; background:white; margin-top:20px; border-radius:8px; }
+    h2 { font-family:'Poppins', sans-serif; color:#007BFF; margin-bottom:20px; }
+    .skills, .certifications { display:flex; flex-wrap:wrap; gap:15px; }
+    .skill-card { flex:1 1 200px; background:#f1f7ff; padding:15px; border-radius:6px; text-align:center; transition:transform 0.3s; }
+    .skill-card:hover { transform:translateY(-5px); }
+    .certifications img { width:80px; height:auto; transition:transform 0.3s; background:#f9f9f9; padding:5px; border-radius:4px; }
+    .certifications img:hover { transform:scale(1.1); }
+    footer { text-align:center; padding:20px; background:#007BFF; color:white; margin-top:40px; }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="profile.jpg" alt="Maharaj Sood" style="width:150px; border-radius:50%; box-shadow: 0 0 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
+<header data-aos="fade-down">
+  <img src="profile.jpg" alt="Your Photo (replace later)">
   <h1>Maharaj Shree Kumar Sood</h1>
-  <p>Cybersecurity Professional | Automotive | ICS/OT | Risk & Compliance</p>
+  <h2 id="typed"></h2>
 </header>
 
 <nav>
   <a href="#about">About</a>
-  <a href="#skills">Skills</a>
+  <a href="#skills">Expertise</a>
   <a href="#certs">Certifications</a>
-  <a href="#experience">Experience</a>
-  <a href="#education">Education</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>Cybersecurity professional with 11.5 years of experience in ICS/OT, Automotive, IoT & Medical. Specialized in penetration testing, embedded security architecture, and compliance frameworks like ISO 21434, ISA/IEC 62443, and UNECE WP.29.</p>
+<section id="about" data-aos="fade-up">
+  <h2>About & Vision</h2>
+  <p>Cybersecurity professional with 11.5 years of experience in ICS/OT, Automotive, IoT & Medical domains. Passionate about driving the global cyber community, enabling collaboration, and securing the digital ecosystem.</p>
 </section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>ICS/OT Cybersecurity (ISA/IEC 62443)</li>
-    <li>Automotive Cybersecurity – ISO 21434, UNECE WP.29</li>
-    <li>SIEM, IDS/IPS, Firewalls, Endpoint Security</li>
-    <li>Secure Architecture: SCADA, DCS, IIoT</li>
-    <li>Encryption, Authentication, PKI, TLS</li>
-  </ul>
+<section id="skills" data-aos="fade-up">
+  <h2>Expertise</h2>
+  <div class="skills">
+    <div class="skill-card">ICS/OT Cybersecurity</div>
+    <div class="skill-card">Automotive Cybersecurity</div>
+    <div class="skill-card">Risk & Compliance</div>
+    <div class="skill-card">Secure Architecture</div>
+    <div class="skill-card">Community Building</div>
+  </div>
 </section>
 
-<section id="certs">
+<section id="certs" data-aos="fade-up">
   <h2>Certifications</h2>
-  <ul>
-    <li>Certified Cybersecurity Professional (62443)</li>
-    <li>Cisco Certified – Cybersecurity Essentials</li>
-    <li>IBM Certified Cybersecurity Analyst</li>
-    <li>OMNEX Certified ISO 21434 Automotive Professional</li>
-    <li>NIST CSF Lead Implementer</li>
-    <li>Cert-In Cyber Crisis Management Professional (CCMP)</li>
-  </ul>
+  <div class="certifications">
+    <img src="cert1.png" alt="Certification 1 (replace later)">
+    <img src="cert2.png" alt="Certification 2 (replace later)">
+    <img src="cert3.png" alt="Certification 3 (replace later)">
+    <img src="cert4.png" alt="Certification 4 (replace later)">
+    <img src="cert5.png" alt="Certification 5 (replace later)">
+    <img src="cert6.png" alt="Certification 6 (replace later)">
+    <img src="cert7.png" alt="Certification 7 (replace later)">
+    <img src="cert8.png" alt="Certification 8 (replace later)">
+  </div>
 </section>
 
-<section id="experience">
-  <h2>Professional Experience</h2>
-  <h3>Lead Cyber Security Analyst – Thales (Apr 2022 – Present)</h3>
-  <ul>
-    <li>Security-by-design for ECU lifecycle using ISO 21434</li>
-    <li>Risk assessments, vulnerability scans, and supplier engagement</li>
-    <li>Designed secure architecture for OT/ICS environments</li>
-  </ul>
-  <h3>Technical Lead – HCL Technologies (Apr 2021 – Apr 2022)</h3>
-  <ul>
-    <li>FOTA & Android App Risk Analysis, TARA</li>
-    <li>Secure Boot/Update PoCs; NIST/OWASP frameworks</li>
-  </ul>
-  <h3>Senior Security Developer – Marelli (2018–2021)</h3>
-  <ul>
-    <li>Remote Key Fob, ECU security implementation, ISO 26262</li>
-    <li>Software Architecture and MISRA/CERT-C adherence</li>
-  </ul>
-  <h3>Embedded Research Engineer – The Hi-tech Robotics (2015–2018)</h3>
-  <ul>
-    <li>Robot systems for surveillance and IED detection</li>
-    <li>CAN Bus, MCU layout optimization</li>
-  </ul>
-</section>
-
-<section id="education">
-  <h2>Education</h2>
-  <p><strong>M.Tech – Embedded Systems</strong><br>Amity University, Noida – 2014</p>
-  <p><strong>B.Tech – Electronics & Communication</strong><br>MRCE, Faridabad – 2012</p>
-</section>
-
-<section id="contact">
+<section id="contact" data-aos="fade-up">
   <h2>Contact</h2>
-  <p>📍 Gurgaon, India 122001<br>
-     📞 +91-9711391314<br>
-     ✉️ <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a><br>
-     🔗 <a href="https://www.linkedin.com/in/maharaj-sood-94435230/">LinkedIn Profile</a>
-  </p>
+  <p>Email: <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/maharaj-sood-94435230/">linkedin.com/in/maharaj-sood</a></p>
 </section>
 
 <footer>
-  <p>&copy; 2025 Maharaj Shree Kumar Sood. All Rights Reserved.</p>
+  <p>&copy; 2025 Maharaj Shree Kumar Sood | Driving the Global Cyber Community</p>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  var typed = new Typed('#typed', {
+    strings: ["Cybersecurity Professional", "Automotive Cyber Architect", "ICS/OT Security Expert", "Driving the Global Cyber Community"],
+    typeSpeed: 50,
+    backSpeed: 25,
+    loop: true
+  });
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 1000 });</script>
 
 </body>
 </html>
