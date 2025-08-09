@@ -431,6 +431,9 @@ function onScrollCheck() {
   }
 }
 window.addEventListener('scroll', onScrollCheck);
+
+
+</script>
 <script>
 // Animate job sections when in view
 const jobSections = document.querySelectorAll('.company-section');
@@ -445,9 +448,6 @@ const jobObserver = new IntersectionObserver((entries) => {
 
 jobSections.forEach(section => jobObserver.observe(section));
 </script>
-
-</script>
-
 
 </body>
 </html>
