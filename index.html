@@ -1,199 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Maharaj Shree Kumar Sood — Cybersecurity Professional</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maharaj Shree Kumar Sood - Cybersecurity Portfolio</title>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<!-- AOS Animation -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{
-  --primary:#00bcd4;
-  --secondary:#26c6da;
-  --bg-dark:#0b1320;
-  --card:#ffffff;
-  --muted:#b0bec5;
+:root {
+  --primary: #0b1320;
+  --secondary: #26c6da;
+  --text: #ffffff;
+  --card-bg: #111a2b;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Roboto',sans-serif;background:var(--bg-dark);color:#fff;line-height:1.6}
-.container{max-width:1100px;margin:24px auto;padding:0 20px}
-
-/* Hero with moving gradient */
-header.hero{
-  border-radius:12px;
-  padding:48px 20px;
-  text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.5);
-  background:linear-gradient(270deg,#00bcd4,#26c6da,#00838f);
-  background-size:600% 600%;
-  animation:gradientMove 15s ease infinite;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--primary);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  overflow-y: scroll;
 }
-@keyframes gradientMove {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+header {
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  padding: 60px 20px;
 }
-
-/* Profile pic */
-.photo{
-  width:220px;height:220px;
-  border-radius:50% / 40%;
-  overflow:hidden;
-  border:4px solid var(--secondary);
-  box-shadow:0 0 20px rgba(0,188,212,0.6);
-  margin:0 auto 20px;
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
 }
-.photo img{width:100%;height:100%;object-fit:cover}
-
-h1{font-family:'Poppins',sans-serif;font-weight:700;color:#fff;margin-bottom:8px}
-.typed-sub{font-size:1.05rem;color:var(--muted);margin-bottom:16px}
-
-nav.topnav{display:flex;justify-content:center;gap:12px;margin-top:12px;flex-wrap:wrap}
-.btn{background:var(--primary);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
-.btn:hover{background:var(--secondary)}
-
-/* Cards */
-section.card{
-  background:var(--card);
-  color:#000;
-  border-radius:10px;
-  padding:28px;
-  margin-top:22px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
+.hero-text {
+  flex: 1 1 55%;
 }
-h2.section-title{font-family:'Poppins',sans-serif;color:var(--primary);margin-bottom:12px}
-
-/* Skills with radar bg */
-#skills{
-  position:relative;
-  overflow:hidden;
+.hero-text h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
 }
-#skills::before{
-  content:"";
-  position:absolute;
-  top:0;left:0;width:100%;height:100%;
-  background:radial-gradient(circle at center,rgba(0,188,212,0.15) 0%,transparent 70%);
-  animation:radar 6s linear infinite;
-  z-index:0;
+.typed-sub {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--secondary);
+  text-shadow: 0 0 6px rgba(38, 198, 218, 0.8), 0 0 12px rgba(38, 198, 218, 0.6);
+  margin-bottom: 15px;
 }
-@keyframes radar{
-  0%{transform:rotate(0deg)}
-  100%{transform:rotate(360deg)}
+.typed-cursor { display: none; }
+.hero-img {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: center;
 }
-
-.skill-bar{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-  padding:8px;
-  border-radius:8px;
-  transition:box-shadow 0.3s ease;
-  z-index:1;
+.hero-img img {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50% / 40%;
+  border: 4px solid var(--secondary);
+  box-shadow: 0 0 15px var(--secondary);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  top: 0;
 }
-.skill-bar:hover{box-shadow:0 0 12px rgba(0,188,212,0.6)}
-.skill-icon{
-  font-size:1.4rem;
-  color:var(--primary);
-  flex-shrink:0;
+.hero-img img:hover {
+  transform: rotate3d(1, 1, 0, 6deg) scale(1.05);
+  box-shadow: 0 0 25px var(--secondary), 0 0 40px rgba(38, 198, 218, 0.6);
 }
-.skill-name{flex:1;font-weight:600;color:#000}
-.bar-bg{flex:3;background:#e0f7fa;border-radius:8px;overflow:hidden;height:14px}
-.bar-fill{
-  height:14px;
-  width:0%;
-  background:var(--primary);
-  transition:width 1.5s ease-in-out;
+section {
+  padding: 50px 20px;
+  max-width: 1100px;
+  margin: auto;
 }
-
-/* Cert grid */
-.cert-grid{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.cert-grid img{
-  width:84px;height:auto;border-radius:6px;background:#fff;padding:6px;
-  box-shadow:0 4px 14px rgba(2,6,23,0.2)
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--secondary);
 }
-
-/* Footer */
-footer{
-  padding:20px;text-align:center;color:#fff;background:var(--primary);
-  border-radius:8px;margin:26px 20px 60px
+.skills-container {
+  position: relative;
+}
+.radar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(38,198,218,0.15) 10%, transparent 60%);
+  background-size: 200% 200%;
+  animation: radarSweep 5s linear infinite;
+  z-index: 0;
+}
+@keyframes radarSweep {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+.skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.skill i {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: var(--secondary);
+}
+.bar {
+  flex: 1;
+  height: 12px;
+  background: #222;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: var(--secondary);
+  width: 0;
+  transition: width 1.5s ease;
+}
+.timeline {
+  position: relative;
+  margin: 20px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--secondary), transparent);
+}
+.timeline-item {
+  position: relative;
+  margin-left: 60px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(38,198,218,0.2);
+}
+.timeline-item.current {
+  border: 2px solid var(--secondary);
+  animation: pulseGlow 2s infinite;
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px var(--secondary); }
+  50% { box-shadow: 0 0 35px var(--secondary); }
+  100% { box-shadow: 0 0 15px var(--secondary); }
+}
+.timeline-item i {
+  position: absolute;
+  left: -42px;
+  top: 20px;
+  background: var(--secondary);
+  color: var(--primary);
+  padding: 8px;
+  border-radius: 50%;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+.cert-grid img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(38,198,218,0.3);
+}
+.contact-info {
+  text-align: center;
+}
+.contact-info a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.contact-info a:hover {
+  text-decoration: underline;
 }
 </style>
 </head>
 <body>
-<div class="container">
-  <header class="hero" data-aos="fade-down">
-    <div class="photo"><img src="profile.jpg" alt="Profile"></div>
-    <h1>Maharaj Shree Kumar Sood</h1>
-    <div class="typed-sub" id="typed-sub"></div>
-    <nav class="topnav">
-      <a class="btn" href="#contact">Work With Me</a>
-      <a class="btn" href="#community" style="background:#07264a">Community</a>
-    </nav>
-  </header>
 
-  <section class="card" id="summary" data-aos="fade-up">
-    <h2 class="section-title">Professional Summary</h2>
-    <p>Cybersecurity Professional with <strong>11.5 years</strong> of experience in ICS/OT, Connected Automotive, IoT & Medical domains. 
-      Skilled in Cybersecurity Assessments, Secure Architecture, Vehicle Penetration Testing, and Resilience for Critical Infrastructure.</p>
-  </section>
-
-  <section class="card" id="skills" data-aos="fade-up">
-    <h2 class="section-title">Skills</h2>
-    <div class="skill-bar"><i class="fas fa-industry skill-icon"></i><div class="skill-name">ICS/OT Cybersecurity (ISA/IEC 62443)</div><div class="bar-bg"><div class="bar-fill" data-fill="95%"></div></div></div>
-    <div class="skill-bar"><i class="fas fa-network-wired skill-icon"></i><div class="skill-name">Industrial Network Security & Risk Assessments</div><div class="bar-bg"><div class="bar-fill" data-fill="90%"></div></div></div>
-    <div class="skill-bar"><i class="fas fa-lock skill-icon"></i><div class="skill-name">Encryption, Authentication, PKI, TLS</div><div class="bar-bg"><div class="bar-fill" data-fill="85%"></div></div></div>
-    <div class="skill-bar"><i class="fas fa-car skill-icon"></i><div class="skill-name">ISO 21434, ISO 24089, UNECE W.P.29</div><div class="bar-bg"><div class="bar-fill" data-fill="92%"></div></div></div>
-    <div class="skill-bar"><i class="fas fa-certificate skill-icon"></i><div class="skill-name">AIS-189/190, RED, CRA Act</div><div class="bar-bg"><div class="bar-fill" data-fill="88%"></div></div></div>
-    <div class="skill-bar"><i class="fas fa-gears skill-icon"></i><div class="skill-name">Secure Architecture for SCADA, DCS, IIoT</div><div class="bar-bg"><div class="bar-fill" data-fill="90%"></div></div></div>
-  </section>
-
-  <section class="card" id="certifications" data-aos="fade-up">
-    <h2 class="section-title">Certifications</h2>
-    <div class="cert-grid">
-      <img src="cert1.JPG" alt="Cert 1">
-      <img src="cert2.JPG" alt="Cert 2">
-      <img src="cert3.jpg" alt="Cert 3">
-      <img src="cert4.jpg" alt="Cert 4">
-      <img src="cert5.jpg" alt="Cert 5">
-      <img src="cert6.jpg" alt="Cert 6">
-      <img src="cert7.jpg" alt="Cert 7">
-      <img src="cert8.jpg" alt="Cert 8">
+<header>
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Maharaj Shree Kumar Sood</h1>
+      <div id="typed-sub" class="typed-sub"></div>
+      <p>Cybersecurity Professional | Automotive Cyber Architect | ICS/OT Security Expert | Driving the Global Cyber Community</p>
     </div>
-  </section>
+    <div class="hero-img">
+      <img src="profile.jpg" alt="Profile Picture">
+    </div>
+  </div>
+</header>
 
-  <section class="card" id="contact" data-aos="fade-up">
-    <h2 class="section-title">Contact</h2>
-    <p>Email: <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/maharaj-sood-94435230/" target="_blank">linkedin.com/in/maharaj-sood</a></p>
-  </section>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+    <div class="radar"></div>
+    <div class="skill" data-skill="90"><i class="fas fa-shield-alt"></i><div class="bar"><div class="bar-fill"></div></div></div>
+    <div class="skill" data-skill="85"><i class="fas fa-network-wired"></i><div class="bar"><div class="bar-fill"></div></div></div>
+    <div class="skill" data-skill="80"><i class="fas fa-lock"></i><div class="bar"><div class="bar-fill"></div></div></div>
+    <div class="skill" data-skill="75"><i class="fas fa-car"></i><div class="bar"><div class="bar-fill"></div></div></div>
+  </div>
+</section>
 
-  <footer>© 2025 Maharaj Shree Kumar Sood — Driving the Global Cyber Community</footer>
-</div>
+<section id="work-history">
+  <h2>Work History</h2>
+  <div class="timeline">
+    <div class="timeline-item current">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Lead Cyber Security Analyst | Thales | Apr 2022 - Present</h3>
+      <ul>
+        <li>Risk Analysis, Vulnerability Assessment & Supplier Management</li>
+        <li>Security-by-design for ECUs with UNECE WP.29 & ISO 21434</li>
+        <li>IEC 62443 controls for OT/ICS</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <i class="fas fa-laptop-code"></i>
+      <h3>Technical Lead | HCL Technologies | Apr 2021 - Apr 2022</h3>
+      <ul>
+        <li>Security analysis for FOTA, Android apps, connected vehicles</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <i class="fas fa-car"></i>
+      <h3>Senior Security Developer | Marelli | Sep 2018 - Mar 2021</h3>
+      <ul>
+        <li>Remote Key Fob implementation, secure provisioning</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <i class="fas fa-robot"></i>
+      <h3>Embedded Research Engineer | Hi-tech Robotics | Feb 2015 - Sep 2018</h3>
+      <ul>
+        <li>Arm-based robotic systems for defense</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <i class="fas fa-tools"></i>
+      <h3>Technical Executive | Milagrow | Sep 2014 - Dec 2014</h3>
+      <ul>
+        <li>Supported Home Cleaning Robot solutions</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
+<section id="certifications">
+  <h2>Certifications</h2>
+  <div class="cert-grid">
+    <img src="cert1.jpg" alt="Certification 1">
+    <img src="cert2.jpg" alt="Certification 2">
+    <img src="cert3.jpg" alt="Certification 3">
+    <img src="cert4.jpg" alt="Certification 4">
+    <img src="cert5.jpg" alt="Certification 5">
+    <img src="cert6.jpg" alt="Certification 6">
+    <img src="cert7.jpg" alt="Certification 7">
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-info">
+    <p>📍 Gurgaon, Haryana, India<br>
+       📞 <a href="tel:+919711391314">+91-9711391314</a><br>
+       ✉️ <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a><br>
+       🔗 <a href="https://www.linkedin.com/in/maharaj-sood-94435230/">LinkedIn</a>
+    </p>
+  </div>
+</section>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init({duration:900,once:true});
-var typed=new Typed('#typed-sub',{
-  strings:["Cybersecurity Professional","Automotive Cyber Architect","ICS/OT Security Expert","Driving the Global Cyber Community"],
-  typeSpeed:40,backSpeed:20,loop:true
+AOS.init();
+// Typed.js setup
+var typed = new Typed('#typed-sub', {
+  strings: [
+    "Cybersecurity Professional",
+    "Automotive Cyber Architect",
+    "ICS/OT Security Expert",
+    "Driving the Global Cyber Community"
+  ],
+  typeSpeed: 50,
+  backSpeed: 30,
+  backDelay: 10000,
+  smartBackspace: true,
+  loop: true,
+  fadeOut: true,
+  fadeOutDelay: 500
 });
-/* Skill bar animation */
-const bars=document.querySelectorAll('.bar-fill');
-function animateBars(){
-  bars.forEach(bar=>{
-    const fill=bar.getAttribute('data-fill');
-    const rect=bar.getBoundingClientRect();
-    if(rect.top<window.innerHeight && rect.bottom>0 && bar.style.width===""){
-      bar.style.width=fill;
-    }
+// Skill bars
+const skills = document.querySelectorAll('.skill');
+function animateSkills() {
+  skills.forEach(skill => {
+    const fill = skill.querySelector('.bar-fill');
+    const percent = skill.getAttribute('data-skill');
+    fill.style.width = percent + '%';
   });
 }
-window.addEventListener('scroll',animateBars);
-animateBars();
+let skillsAnimated = false;
+window.addEventListener('scroll', () => {
+  const section = document.querySelector('#skills');
+  const top = section.getBoundingClientRect().top;
+  if (!skillsAnimated && top < window.innerHeight) {
+    animateSkills();
+    skillsAnimated = true;
+  }
+});
 </script>
 </body>
 </html>
