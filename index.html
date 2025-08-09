@@ -249,27 +249,6 @@ h2 {
   </div>
 </section>
 
-  const skillsSection = document.getElementById('skills');
-const skillRows = document.querySelectorAll('.skill');
-
-function fillSkillBars() {
-  skillRows.forEach(row => {
-    const target = row.getAttribute('data-skill') || '0';
-    row.querySelector('.bar-fill').style.width = target + '%';
-    row.querySelector('.skill-percent').textContent = target + '%';
-  });
-}
-
-function onScrollCheck() {
-  const rect = skillsSection.getBoundingClientRect();
-  if (rect.top < window.innerHeight - 80) {
-    fillSkillBars();
-    window.removeEventListener('scroll', onScrollCheck);
-  }
-}
-window.addEventListener('scroll', onScrollCheck);
-
-
 <section id="work-history">
   <h2>Work History</h2>
   <div class="timeline">
@@ -380,6 +359,26 @@ window.addEventListener('scroll', () => {
     skillsAnimated = true;
   }
 });
+  const skillsSection = document.getElementById('skills');
+const skillRows = document.querySelectorAll('.skill');
+
+function fillSkillBars() {
+  skillRows.forEach(row => {
+    const target = row.getAttribute('data-skill') || '0';
+    row.querySelector('.bar-fill').style.width = target + '%';
+    row.querySelector('.skill-percent').textContent = target + '%';
+  });
+}
+
+function onScrollCheck() {
+  const rect = skillsSection.getBoundingClientRect();
+  if (rect.top < window.innerHeight - 80) {
+    fillSkillBars();
+    window.removeEventListener('scroll', onScrollCheck);
+  }
+}
+window.addEventListener('scroll', onScrollCheck);
+
 </script>
 </body>
 </html>
