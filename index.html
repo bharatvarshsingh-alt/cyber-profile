@@ -380,5 +380,20 @@ function onScrollCheck() {
 window.addEventListener('scroll', onScrollCheck);
 
 </script>
+  // Animate career journey items when they scroll into view
+const journeyItems = document.querySelectorAll('.journey-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.4 });
+
+journeyItems.forEach(item => {
+  observer.observe(item);
+});
+
 </body>
 </html>
