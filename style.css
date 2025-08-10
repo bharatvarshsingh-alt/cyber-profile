@@ -173,14 +173,13 @@
   transform: translateX(0) translateY(0);
 }
 
-/* Light background after hero */
-main, section {
-  background-color: #f8f9fa; /* Soft light grey */
+/* Light background only for certifications */
+section.certifications {
+  background-color: #f8f9fa; /* Light grey */
+  padding: 60px 10%;
+  border-radius: 8px;
 }
 
-section:nth-child(even) {
-  background-color: #ffffff; /* White for alternation */
-}
 
 section {
   padding: 60px 10%;
