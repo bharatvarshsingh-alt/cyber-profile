@@ -173,5 +173,16 @@
   transform: translateX(0) translateY(0);
 }
 
+/* Light background after hero */
+main, section {
+  background-color: #f8f9fa; /* Soft light grey */
+}
 
+section:nth-child(even) {
+  background-color: #ffffff; /* White for alternation */
+}
+
+section {
+  padding: 60px 10%;
+}
 
