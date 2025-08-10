@@ -173,15 +173,5 @@
   transform: translateX(0) translateY(0);
 }
 
-/* Light background only for certifications */
-section.certifications {
-  background-color: #f8f9fa; /* Light grey */
-  padding: 60px 10%;
-  border-radius: 8px;
-}
 
-
-section {
-  padding: 60px 10%;
-}
 
