@@ -494,7 +494,7 @@ jobSections.forEach(section => jobObserver.observe(section));
 </body>
 </html>
 
- <script>
+<script>
 // Reveal certifications highlight and slide-in images on scroll
 const certSection = document.querySelector('#certifications');
 if (certSection) {
@@ -507,5 +507,21 @@ if (certSection) {
     });
   }, { threshold: 0.25 });
   certObserver.observe(certSection);
+}
+</script>
+
+<script>
+// Reveal services items with staggered slide-in on scroll
+const servicesSection = document.querySelector('#services');
+if (servicesSection) {
+  const servicesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        servicesSection.classList.add('visible');
+        servicesObserver.unobserve(servicesSection);
+      }
+    });
+  }, { threshold: 0.2 });
+  servicesObserver.observe(servicesSection);
 }
 </script>
