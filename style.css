@@ -180,18 +180,18 @@ section.certifications {
   border-radius: 8px;
 }
 
+
 .hero {
-  min-height: 100vh; /* full viewport height */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* space between text & image */
-  flex-direction: row; /* horizontal layout */
+  justify-content: space-between;
+  flex-direction: row;
   background-size: cover;
   background-position: center;
-  overflow: hidden; /* prevents minor jumps */
-  padding: 0 10%; /* optional horizontal padding */
-  gap: 40px; /* space between text and image */
-   overflow: hidden; /* prevents minor jumps */
+  overflow: hidden;
+  padding: 40px 10%; /* reduced vertical padding */
+  gap: 40px;
+    overflow: hidden; /* prevents minor jumps */
 }
 
 .hero-text {
@@ -207,5 +207,6 @@ section.certifications {
 .hero-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 50%; /* optional: make oval/circle */
+  border-radius: 50%;
 }
+
