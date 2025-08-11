@@ -482,14 +482,30 @@ jobSections.forEach(section => jobObserver.observe(section));
     <section id="services">
       <h2>Cyber Services Offered</h2>
       <ul>
-        <li>ICS/OT Security Assessments and Architecture</li>
-        <li>Automotive Cybersecurity (ISO 21434, UNECE WP.29)</li>
+        <li>Risk Assessments & Analysis</li>
+        <li>Regulatory Complainces (ISO 21434, UNECE WP.29, AIS 189/190)</li>
         <li>Penetration Testing and Vulnerability Assessment</li>
-        <li>Network Segmentation, IDS/IPS, and Monitoring</li>
-        <li>Compliance and Risk Management (NIST CSF, IEC 62443)</li>
-        <li>PKI, Secure Boot/Update, and Cryptography Consulting</li>
+        <li>OT Compliance and Risk Management (NIST CSF, IEC 62443, NCIIPC, CERT-In)</li>
+        <li>Gap Assessment & Stakeholder Interations</li>
+        <li>Customized Cyber Awareness & Training's</li>
       </ul>
     </section>
 
 </body>
 </html>
+
+ <script>
+// Reveal certifications highlight and slide-in images on scroll
+const certSection = document.querySelector('#certifications');
+if (certSection) {
+  const certObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        certSection.classList.add('visible');
+        certObserver.unobserve(certSection);
+      }
+    });
+  }, { threshold: 0.25 });
+  certObserver.observe(certSection);
+}
+</script>
