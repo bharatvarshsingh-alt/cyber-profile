@@ -175,7 +175,7 @@
 
 /* Light background only for certifications */
 section.certifications {
-  background-color: #f8f9fa; /* Light grey */
+  background-color:  #ffffff; /* Pure white */ 
   padding: 60px 10%;
   border-radius: 8px;
 }
