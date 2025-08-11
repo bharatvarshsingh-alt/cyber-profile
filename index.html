@@ -204,6 +204,47 @@ h2 {
 #certifications.visible .cert-grid img:nth-child(6){ transition-delay: .55s; }
 #certifications.visible .cert-grid img:nth-child(7){ transition-delay: .65s; }
 .cert-grid img:hover { box-shadow: 0 0 18px rgba(38,198,218,0.45); transform: translateX(0) translateY(-3px); }
+
+/* Services section: two-column grid with icons and staggered slide-in */
+#services { position: relative; }
+#services .services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 18px 28px;
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+}
+#services .service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(17, 26, 43, 0.7);
+  border: 1px solid rgba(38,198,218,0.25);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(38,198,218,0.15);
+  transform: translateX(-24px);
+  opacity: 0;
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out, box-shadow 0.25s ease;
+}
+#services .service-item i {
+  color: var(--secondary);
+  font-size: 1.25rem;
+  margin-top: 2px;
+}
+#services .service-item span { line-height: 1.4; }
+#services .service-item:hover { box-shadow: 0 0 16px rgba(38,198,218,0.35); transform: translateX(-2px); }
+#services.visible .service-item { transform: translateX(0); opacity: 1; }
+#services.visible .service-item:nth-child(1) { transition-delay: .05s; }
+#services.visible .service-item:nth-child(2) { transition-delay: .15s; }
+#services.visible .service-item:nth-child(3) { transition-delay: .25s; }
+#services.visible .service-item:nth-child(4) { transition-delay: .35s; }
+#services.visible .service-item:nth-child(5) { transition-delay: .45s; }
+#services.visible .service-item:nth-child(6) { transition-delay: .55s; }
+@media (max-width: 720px) {
+  #services .services-grid { grid-template-columns: 1fr; }
+}
 .contact-info {
   text-align: center;
 }
@@ -364,13 +405,13 @@ h2 {
     <!-- New Cyber Services Offered section -->
     <section id="services">
       <h2>Cyber Services Offered</h2>
-      <ul>
-        <li>ICS/OT Security Assessments and Architecture</li>
-        <li>Automotive Cybersecurity (ISO 21434, UNECE WP.29)</li>
-        <li>Penetration Testing and Vulnerability Assessment</li>
-        <li>Network Segmentation, IDS/IPS, and Monitoring</li>
-        <li>Compliance and Risk Management (NIST CSF, IEC 62443)</li>
-        <li>PKI, Secure Boot/Update, and Cryptography Consulting</li>
+      <ul class="services-grid">
+        <li class="service-item"><i class="fa-solid fa-industry"></i><span>ICS/OT Security Assessments and Architecture</span></li>
+        <li class="service-item"><i class="fa-solid fa-car"></i><span>Automotive Cybersecurity (ISO 21434, UNECE WP.29)</span></li>
+        <li class="service-item"><i class="fa-solid fa-user-secret"></i><span>Penetration Testing and Vulnerability Assessment</span></li>
+        <li class="service-item"><i class="fa-solid fa-network-wired"></i><span>Network Segmentation, IDS/IPS, and Monitoring</span></li>
+        <li class="service-item"><i class="fa-solid fa-clipboard-check"></i><span>Compliance and Risk Management (NIST CSF, IEC 62443)</span></li>
+        <li class="service-item"><i class="fa-solid fa-key"></i><span>PKI, Secure Boot/Update, and Cryptography Consulting</span></li>
       </ul>
     </section>
 
@@ -525,6 +566,22 @@ if (certSection) {
     });
   }, { threshold: 0.25 });
   certObserver.observe(certSection);
+}
+</script>
+
+<script>
+// Reveal services items with staggered slide-in on scroll
+const servicesSection = document.querySelector('#services');
+if (servicesSection) {
+  const servicesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        servicesSection.classList.add('visible');
+        servicesObserver.unobserve(servicesSection);
+      }
+    });
+  }, { threshold: 0.2 });
+  servicesObserver.observe(servicesSection);
 }
 </script>
 
