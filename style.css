@@ -241,6 +241,13 @@ section.certifications {
 #certifications.visible .cert-grid img:nth-child(7){ transition-delay: .65s; }
 .cert-grid img:hover { box-shadow: 0 0 18px rgba(38,198,218,0.45); transform: translateX(0) translateY(-3px); }
 
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  align-items: center;  /* vertical centering */
+  justify-items: center; /* horizontal centering */
+}
 
 /* Services section: two-column grid with icons and staggered slide-in */
 #services { position: relative; }
@@ -285,9 +292,13 @@ section.certifications {
 }
 
 .cert-grid img {
-  width: 100%;
-  height: 120px;       /* adjust as needed */
-  object-fit: contain; /* preserve aspect ratio */
-  padding: 8px;        /* optional breathing room */
+ width: auto;            /* let width scale naturally */
+  max-width: 100%;        /* prevent stretching */
+  height: 120px;          /* fixed height */
+  object-fit: contain;    /* keep aspect ratio */
+  display: block;         /* remove inline whitespace issues */
+  padding: 8px;           /* breathing room */
   border-radius: 8px;
+  background-color: white; /* optional: uniform bg for odd aspect ratios */
+  box-sizing: border-box; /* ensures padding doesn't break height */
 }
