@@ -116,10 +116,12 @@
 
 .company-section {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
   padding: 60px 10%;
-  gap: 40px;
+  gap: 30px;
   opacity: 0;
+  margin-bottom: 50px
   transform: translateY(50px);
   transition: all 0.8s ease-out;
 }
@@ -133,8 +135,8 @@
   transform: translateY(0);
 }
 
-.company-text {
-  flex: 1;
+.company-section .company-text {
+  flex: 1 1 60%; /* wider area for text */
 }
 
 .company-image {
