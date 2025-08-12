@@ -480,8 +480,39 @@ jobSections.forEach(section => jobObserver.observe(section));
       </ul>
     </section>
 
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".company-section");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target); // run once
+        }
+      });
+    },
+    { threshold: 0.2 } // triggers when 20% is visible
+  );
+
+  sections.forEach((section, index) => {
+    // Alternate left/right
+    if (index % 2 === 0) {
+      section.classList.add("slide-left");
+    } else {
+      section.classList.add("slide-right");
+    }
+    observer.observe(section);
+  });
+});
+</script>
+
+  
 </body>
 </html>
+
+
 
 <script>
 // Reveal certifications highlight and slide-in images on scroll
