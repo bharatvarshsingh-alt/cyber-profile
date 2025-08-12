@@ -425,44 +425,6 @@ function onScrollCheck() {
 }
 window.addEventListener('scroll', onScrollCheck);
 </script>
-  
-<script>
-// Animate job sections when in view
-const jobSections = document.querySelectorAll('.company-section');
-
-const jobObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
-
-jobSections.forEach(section => jobObserver.observe(section));
-</script>
-
- <script>
-const jobSections = document.querySelectorAll('.company-section');
-
-jobSections.forEach((section, index) => {
-  // Alternate animation direction
-  if (index % 2 === 0) {
-    section.classList.add('slide-left'); // Left-to-right animation
-  } else {
-    section.classList.add('slide-right'); // Right-to-left animation
-  }
-});
-
-const jobObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
-
-jobSections.forEach(section => jobObserver.observe(section));
-</script>
 
 </div>
 </section>
