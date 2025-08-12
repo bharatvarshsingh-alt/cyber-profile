@@ -332,3 +332,7 @@ section.certifications {
   align-items: center;
   justify-content: center;
 }
+
+html {
+  overflow-y: scroll; /* keeps scrollbar space reserved */
+}
