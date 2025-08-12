@@ -118,6 +118,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-between;
   padding: 60px 10%;
   gap: 30px;
   opacity: 0;
@@ -136,18 +137,19 @@
 }
 
 .company-section .company-text {
-  flex: 1 1 60%; /* wider area for text */
+  flex: 1;
 }
 
 .company-image {
-  flex: 1;
+  flex: 0 0 auto;
 }
 
 .company-image img {
   max-width: 100%;
   height: auto;
-  width: 100%;
+  width: 300px;
   border-radius: 10px;
+  display:block;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
