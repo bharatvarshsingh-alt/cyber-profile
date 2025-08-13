@@ -118,11 +118,11 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 40px;
-  gap: 50px;
+  gap: 30px;
   opacity: 0;
-  margin-bottom: 50px
+  margin-bottom: 60px
   transform: translateY(50px);
   transition: all 1.0s ease-out;
 }
@@ -137,8 +137,7 @@
 }
 
 .company-section .company-text {
-  flex: 1;
-  max-width: 70%; /* let text be wide enough */
+  flex: 0 1 65%; /* text gets around two-thirds width */
 }
 
 .company-section.company-image {
@@ -146,7 +145,7 @@
 }
 
 .company-section.company-image img {
-  max-width: 100%;
+  max-width: 250px;
   height: auto;
   width: 320px;
   border-radius: 10px;
