@@ -118,9 +118,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
-  padding: 60px 10%;
-  gap: 30px;
+  justify-content: flex-start;
+  padding: 0 40px;
+  gap: 50px;
   opacity: 0;
   margin-bottom: 50px
   transform: translateY(50px);
@@ -138,16 +138,17 @@
 
 .company-section .company-text {
   flex: 1;
+  max-width: 70%; /* let text be wide enough */
 }
 
-.company-image {
+.company-section.company-image {
   flex: 0 0 auto;
 }
 
-.company-image img {
+.company-section.company-image img {
   max-width: 100%;
   height: auto;
-  width: 300px;
+  width: 320px;
   border-radius: 10px;
   display:block;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
