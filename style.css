@@ -138,7 +138,7 @@
 }
 
 .company-section .company-image img {
-  max-width: 100px;
+  max-width: 250px;
   height: auto;
   border-radius: 10px;
   display: block;
