@@ -430,7 +430,7 @@ window.addEventListener('scroll', onScrollCheck);
 </section>
 
     <!-- New Cyber Services Offered section -->
-    <section id="services">
+    <section class="cyber-services">
       <h2>Cyber Services Offered</h2>
       <ul>
         <li>Domain Specific Risk Assessments & Gap Analysis</li>
@@ -489,22 +489,6 @@ if (certSection) {
     });
   }, { threshold: 0.25 });
   certObserver.observe(certSection);
-}
-</script>
-
-<script>
-// Reveal services items with staggered slide-in on scroll
-const servicesSection = document.querySelector('#services');
-if (servicesSection) {
-  const servicesObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        servicesSection.classList.add('visible');
-        servicesObserver.unobserve(servicesSection);
-      }
-    });
-  }, { threshold: 0.2 });
-  servicesObserver.observe(servicesSection);
 }
 </script>
 
