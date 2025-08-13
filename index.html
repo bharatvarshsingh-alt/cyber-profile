@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Maharaj Shree Kumar Sood - Cybersecurity Portfolio</title>
-<!-- Font Awesome -->
+
+<!-- External CSS & Libraries -->
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-<!-- AOS Animation -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 <style>
 :root {
   --primary: #0b1320;
@@ -22,15 +23,13 @@ body {
   color: var(--text);
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll;
 }
 header {
   background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
   color: white;
   padding: 60px 20px;
 }
-
-  .hero {
+.hero {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -38,19 +37,13 @@ header {
   max-width: 1200px;
   margin: auto;
 }
- 
-.hero-text {
-  flex: 1 1 55%;
-}
-.hero-text h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
+.hero-text { flex: 1 1 55%; }
+.hero-text h1 { font-size: 2.2rem; margin-bottom: 10px; }
 .typed-sub {
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--secondary);
-  text-shadow: 0 0 6px rgba(38, 198, 218, 0.8), 0 0 12px rgba(38, 198, 218, 0.6);
+  text-shadow: 0 0 6px rgba(38, 198, 218, 0.8);
   margin-bottom: 15px;
 }
 .typed-cursor { display: none; }
@@ -67,8 +60,6 @@ header {
   border: 4px solid var(--secondary);
   box-shadow: 0 0 15px var(--secondary);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  position: relative;
-  top: 0;
 }
 .hero-img img:hover {
   transform: rotate3d(1, 1, 0, 6deg) scale(1.05);
@@ -84,9 +75,7 @@ h2 {
   margin-bottom: 30px;
   color: var(--secondary);
 }
-.skills-container {
-  position: relative;
-}
+.skills-container { position: relative; }
 .radar {
   position: absolute;
   top: 0; left: 0;
@@ -94,7 +83,6 @@ h2 {
   background: radial-gradient(circle, rgba(38,198,218,0.15) 10%, transparent 60%);
   background-size: 200% 200%;
   animation: radarSweep 5s linear infinite;
-  z-index: 0;
 }
 @keyframes radarSweep {
   0% { background-position: 0% 0%; }
@@ -107,11 +95,7 @@ h2 {
   position: relative;
   z-index: 1;
 }
-.skill i {
-  font-size: 1.5rem;
-  margin-right: 15px;
-  color: var(--secondary);
-}
+.skill i { font-size: 1.5rem; margin-right: 15px; color: var(--secondary); }
 .bar {
   flex: 1;
   height: 12px;
@@ -124,19 +108,6 @@ h2 {
   background: var(--secondary);
   width: 0;
   transition: width 1.5s ease;
-}
-.timeline {
-  position: relative;
-  margin: 20px 0;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--secondary), transparent);
 }
 .timeline-item {
   position: relative;
@@ -152,18 +123,8 @@ h2 {
   animation: pulseGlow 2s infinite;
 }
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 15px var(--secondary); }
+  0%, 100% { box-shadow: 0 0 15px var(--secondary); }
   50% { box-shadow: 0 0 35px var(--secondary); }
-  100% { box-shadow: 0 0 15px var(--secondary); }
-}
-.timeline-item i {
-  position: absolute;
-  left: -42px;
-  top: 20px;
-  background: var(--secondary);
-  color: var(--primary);
-  padding: 8px;
-  border-radius: 50%;
 }
 .cert-grid {
   display: grid;
@@ -175,19 +136,13 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(38,198,218,0.3);
 }
-.contact-info {
-  text-align: center;
-}
+.contact-info { text-align: center; }
 .contact-info a {
   color: var(--secondary);
   text-decoration: none;
 }
-.contact-info a:hover {
-  text-decoration: underline;
-}
+.contact-info a:hover { text-decoration: underline; }
 </style>
-
-
 </head>
 <body>
 
@@ -204,136 +159,55 @@ h2 {
   </div>
 </header>
 
-  <section id="skills">
+<section id="skills">
   <h2>Skills</h2>
-
   <div class="skills-container">
     <div class="radar" aria-hidden="true"></div>
-
     <div class="skill" data-skill="95">
-      <i class="fas fa-industry skill-icon" aria-hidden="true"></i>
-      <div class="skill-label">ICS/OT Cybersecurity (ISA/IEC 62443) </div>
-      <div class="bar"><div class="bar-fill"></div></div>
-      <div class="skill-percent">95%</div>
+      <i class="fas fa-industry"></i><div class="skill-label">ICS/OT Cybersecurity (ISA/IEC 62443)</div>
+      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">95%</div>
     </div>
-
     <div class="skill" data-skill="90">
-      <i class="fas fa-network-wired skill-icon" aria-hidden="true"></i>
-      <div class="skill-label">Industrial Network Security & Risk Assessments </div>
-      <div class="bar"><div class="bar-fill"></div></div>
-      <div class="skill-percent">90%</div>
+      <i class="fas fa-network-wired"></i><div class="skill-label">Industrial Network Security & Risk Assessments</div>
+      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">90%</div>
     </div>
-
     <div class="skill" data-skill="85">
-      <i class="fas fa-lock skill-icon" aria-hidden="true"></i>
-      <div class="skill-label">Encryption, Authentication, PKI, TLS </div>
-      <div class="bar"><div class="bar-fill"></div></div>
-      <div class="skill-percent">85%</div>
+      <i class="fas fa-lock"></i><div class="skill-label">Encryption, Authentication, PKI, TLS</div>
+      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">85%</div>
     </div>
-
     <div class="skill" data-skill="92">
-      <i class="fas fa-car skill-icon" aria-hidden="true"></i>
-      <div class="skill-label">ISO 21434, ISO 24089, UNECE W.P.29, AIS189/190 </div>
-      <div class="bar"><div class="bar-fill"></div></div>
-      <div class="skill-percent">92%</div>
+      <i class="fas fa-car"></i><div class="skill-label">ISO 21434, ISO 24089, UNECE W.P.29, AIS189/190</div>
+      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">92%</div>
     </div>
-
     <div class="skill" data-skill="88">
-      <i class="fas fa-shield-alt skill-icon" aria-hidden="true"></i>
-      <div class="skill-label">Secure Architecture for SCADA, DCS, IIoT </div>
-      <div class="bar"><div class="bar-fill"></div></div>
-      <div class="skill-percent">88%</div>
+      <i class="fas fa-shield-alt"></i><div class="skill-label">Secure Architecture for SCADA, DCS, IIoT</div>
+      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">88%</div>
     </div>
-
     <div class="skill" data-skill="87">
-      <i class="fas fa-file-contract skill-icon" aria-hidden="true"></i>
-      <div class="skill-label">Compliance (RED, NERC CIP, NCIIPC, CRA) </div>
-      <div class="bar"><div class="bar-fill"></div></div>
-      <div class="skill-percent">87%</div>
+      <i class="fas fa-file-contract"></i><div class="skill-label">Compliance (RED, NERC CIP, NCIIPC, CRA)</div>
+      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">87%</div>
     </div>
   </div>
 </section>
 
- <!-- Career Journey Zig-Zag Layout -->
+<!-- Career Sections -->
 <section class="company-section">
   <div class="company-text">
     <h2>Lead Cyber Security Analyst <span class="current-badge">Current</span></h2>
     <h3>Thales | Apr 2022 - Present</h3>
     <ul>
-      <li>Delivering secure-by-design principles and defense-in-depth strategies from concept to decommissioning, ensuring resilience against evolving threats.</li>
-      <li>Driving certification readiness by embedding compliance requirements into development workflows, bridging the gap between engineering teams and regulatory bodies.</li>
-      <li>Conducting comprehensive vehicle-level cybersecurity risk assessments to identify attack vectors, optimize architecture, and implement proactive security controls.</li>
-      <li>Executing in-depth risk assessments, vulnerability scans, and architecture reviews for OT/ICS environments, with a focus on secure zones and conduits. (3-2).</li>
-      <li>Implementing security management processes and continuous monitoring throughout the product lifecycle, from concept and development to maintenance and retirement.</li>
-      <li>Designing and executing penetration tests on automotive ECUs, delivering actionable insights, tailored remediation strategies, and project estimations.</li>
+      <li>Delivering secure-by-design principles and defense-in-depth strategies from concept to decommissioning.</li>
+      <li>Embedding compliance requirements into development workflows.</li>
+      <li>Conducting comprehensive vehicle-level cybersecurity risk assessments.</li>
+      <li>Executing risk assessments, vulnerability scans, and architecture reviews for OT/ICS.</li>
+      <li>Implementing security management processes throughout the product lifecycle.</li>
+      <li>Designing and executing penetration tests on automotive ECUs.</li>
     </ul>
   </div>
-  <div class="company-image">
-    <img src="thales.jpg" alt="Thales Work">
-  </div>
+  <div class="company-image"><img src="thales.jpg" alt="Thales Work"></div>
 </section>
 
-<section class="company-section reverse">
-  <div class="company-text">
-    <h2>Technical Lead</h2>
-    <h3>HCL Technologies | Apr 2021 - Apr 2022</h3>
-    <ul>
-      <li>Security analysis for FOTA & Android Apps</li>
-      <li>Securre Debug, Secure Boot & Secure Update POC</li>
-      <li>Risk Assessment & NIST/OWASP Recommendations</li>
-    </ul>
-  </div>
-  <div class="company-image">
-    <img src="hcl.jpg" alt="HCL Work">
-  </div>
-</section>
-
-<section class="company-section">
-  <div class="company-text">
-    <h2>Senior Security Developer</h2>
-    <h3>Marelli India Pvt Ltd | Sep 2018 - Mar 2021</h3>
-    <ul>
-      <li>Remote Key Fob implementation & Secure Provisioning</li>
-      <li>Anti Theft Features - Vehicle Ignition, PEPS, IMMO</li>
-      <li>SW Architecture with Enterprise Architect</li>
-      <li>Adherence to ISO 26262, MISRA, CERT-C</li>
-    </ul>
-  </div>
-  <div class="company-image">
-    <img src="marelli.jpg" alt="Marelli Work">
-  </div>
-</section>
-
-<section class="company-section reverse">
-  <div class="company-text">
-    <h2>Embedded Research Engineer</h2>
-    <h3>The Hi-Tech Robotics Systemz Ltd | Feb 2015 - Sep 2018</h3>
-    <ul>
-      <li>IED detection robotic Arm with Surveillance</li>
-      <li>CAN bus Integration & Multi-Joint Motion Control</li>
-      <li>Multi to Single MCU Architecture Transformation</li>
-    </ul>
-  </div>
-  <div class="company-image">
-    <img src="hitech.jpg" alt="Hi-Tech Robotics Work">
-  </div>
-</section>
-
-<section class="company-section">
-  <div class="company-text">
-    <h2>Technical Executive</h2>
-    <h3>Milagrow | Sep 2014 - Dec 2014</h3>
-    <ul>
-      <li>Troubleshooting & support for home cleaning robots</li>
-    </ul>
-  </div>
-  <div class="company-image">
-    <img src="milagrow.jpg" alt="Milagrow Work">
-  </div>
-</section>
-
-  
-
+<!-- Additional career entries ... -->
 
 <section id="certifications">
   <h2>Certifications</h2>
@@ -348,31 +222,38 @@ h2 {
   </div>
 </section>
 
-  
+<section class="cyber-services">
+  <h2>Cyber Services Offered</h2>
+  <ul>
+    <li>Domain Specific Risk Assessments & Gap Analysis</li>
+    <li>Regulatory Compliance (ISO 21434, UNECE WP.29, AIS 189/190)</li>
+    <li>Penetration Testing and Vulnerability Assessment</li>
+    <li>OT Compliance (NIST CSF, IEC 62443, NCIIPC, CERT-In)</li>
+    <li>Stakeholder Interactions for Cyber Approvals</li>
+    <li>Customized Cyber Training & Sessions</li>
+  </ul>
+</section>
 
-<script>
-// Animate career journey items when they scroll into view
-const journeyItems = document.querySelectorAll('.journey-item');
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-info">
+    <p>
+      📍 Gurgaon, Haryana, India<br>
+      📞 <a href="tel:+919711391314">+91-9711391314</a><br>
+      ✉️ <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a><br>
+      🔗 <a href="https://www.linkedin.com/in/maharaj-sood-94435230/">LinkedIn</a>
+    </p>
+  </div>
+</section>
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.4 });
-
-journeyItems.forEach(item => {
-  observer.observe(item);
-});
-</script>
-
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init();
-// Typed.js setup
-var typed = new Typed('#typed-sub', {
+
+// Typed.js
+new Typed('#typed-sub', {
   strings: [
     "Cybersecurity Professional",
     "Automotive Cyber Architect",
@@ -384,121 +265,28 @@ var typed = new Typed('#typed-sub', {
   backDelay: 10000,
   smartBackspace: true,
   loop: true,
-  fadeOut: true,
-  fadeOutDelay: 500
+  fadeOut: true
 });
-// Skill bars
+
+// Skill bar animation
+const skillsSection = document.getElementById('skills');
 const skills = document.querySelectorAll('.skill');
-function animateSkills() {
-  skills.forEach(skill => {
-    const fill = skill.querySelector('.bar-fill');
-    const percent = skill.getAttribute('data-skill');
-    fill.style.width = percent + '%';
-  });
-}
-let skillsAnimated = false;
-window.addEventListener('scroll', () => {
-  const section = document.querySelector('#skills');
-  const top = section.getBoundingClientRect().top;
-  if (!skillsAnimated && top < window.innerHeight) {
-    animateSkills();
-    skillsAnimated = true;
-  }
-});
-  const skillsSection = document.getElementById('skills');
-const skillRows = document.querySelectorAll('.skill');
-
 function fillSkillBars() {
-  skillRows.forEach(row => {
-    const target = row.getAttribute('data-skill') || '0';
-    row.querySelector('.bar-fill').style.width = target + '%';
-    row.querySelector('.skill-percent').textContent = target + '%';
+  skills.forEach(skill => {
+    const percent = skill.getAttribute('data-skill') || '0';
+    skill.querySelector('.bar-fill').style.width = percent + '%';
+    skill.querySelector('.skill-percent').textContent = percent + '%';
   });
 }
-
-function onScrollCheck() {
-  const rect = skillsSection.getBoundingClientRect();
-  if (rect.top < window.innerHeight - 80) {
-    fillSkillBars();
-    window.removeEventListener('scroll', onScrollCheck);
-  }
-}
-window.addEventListener('scroll', onScrollCheck);
-</script>
-
-</div>
-</section>
-
-    <!-- New Cyber Services Offered section -->
-    <section class="cyber-services">
-      <h2>Cyber Services Offered</h2>
-      <ul>
-        <li>Domain Specific Risk Assessments & Gap Analysis</li>
-        <li>Regulatory Complainces (ISO 21434, UNECE WP.29, AIS 189/190)</li>
-        <li>Penetration Testing and Vulnerability Assessment</li>
-        <li>OT Compliance (NIST CSF, IEC 62443, NCIIPC, CERT-In)</li>
-        <li>Stakeholder Interactions for Cyber Approvals</li>
-        <li>Customized Cyber Training's & Sessions</li>
-      </ul>
-    </section>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".company-section");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target); // run once
-        }
-      });
-    },
-    { threshold: 0.2 } // triggers when 20% is visible
-  );
-
-  sections.forEach((section, index) => {
-    // Alternate left/right
-    if (index % 2 === 0) {
-      section.classList.add("slide-left");
-    } else {
-      section.classList.add("slide-right");
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      fillSkillBars();
+      skillObserver.unobserve(skillsSection);
     }
-    observer.observe(section);
   });
-});
+}, { threshold: 0.3 });
+skillObserver.observe(skillsSection);
 </script>
-
-  
 </body>
 </html>
-
-
-
-<script>
-// Reveal certifications highlight and slide-in images on scroll
-const certSection = document.querySelector('#certifications');
-if (certSection) {
-  const certObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        certSection.classList.add('visible');
-        certObserver.unobserve(certSection);
-      }
-    });
-  }, { threshold: 0.25 });
-  certObserver.observe(certSection);
-}
-</script>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="contact-info">
-    <p>📍 Gurgaon, Haryana, India<br>
-       📞 <a href="tel:+919711391314">+91-9711391314</a><br>
-       ✉️ <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a><br>
-       🔗 <a href="https://www.linkedin.com/in/maharaj-sood-94435230/">LinkedIn</a>
-    </p>
-  </div>
-</section>
