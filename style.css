@@ -104,16 +104,7 @@
   }
 }
 
-/* --- Career Journey Styling --- */
-.current-badge {
-  background: #00ffcc;
-  color: #000;
-  font-size: 0.8rem;
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-left: 8px;
-}
-
+/* --- Company Section --- */
 .company-section {
   display: flex;
   flex-wrap: wrap;
@@ -121,10 +112,10 @@
   justify-content: space-between;
   padding: 0 40px;
   gap: 30px;
+  margin-bottom: 60px;
   opacity: 0;
-  margin-bottom: 60px
   transform: translateY(50px);
-  transition: all 1.0s ease-out;
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .company-section.reverse {
@@ -137,56 +128,28 @@
 }
 
 .company-section .company-text {
-  flex: 0 1 65%; /* text gets around two-thirds width */
+  flex: 0 1 65%;
 }
 
-.company-section.company-image {
+.company-section .company-image {
   flex: 0 0 auto;
 }
 
-.company-section.company-image img {
+.company-section .company-image img {
   max-width: 250px;
   height: auto;
-  width: 320px;
   border-radius: 10px;
-  display:block;
+  display: block;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
+/* Mobile layout */
 @media (max-width: 768px) {
-  .company-section, .company-section.reverse {
-    flex-direction: column;
-  }
-}
-
-/* Zig-Zag Fade & Slide Animation */
-.company-section {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.company-section.slide-left {
-  transform: translateX(-50px);
-}
-
-.company-section.slide-right {
-  transform: translateX(50px);
-}
-
-.company-section.visible {
-  opacity: 1;
-  transform: translateX(0) translateY(0);
-}
-
-/* Make sure it’s responsive on small screens */
-@media (max-width: 768px) {
-  .company-section {
-    flex-direction: column;
-    align-items: center;
-  }
+  .company-section,
   .company-section.reverse {
     flex-direction: column;
+    align-items: center;
+    text-align: left;
   }
   .company-section .company-text,
   .company-section .company-image {
@@ -194,14 +157,125 @@
   }
 }
 
-/* Light background only for certifications */
+/* --- Current Badge --- */
+.current-badge {
+  background: #00ffcc;
+  color: #000;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+/* --- Certifications Section --- */
 section.certifications {
-  background-color:  #ffffff; /* Pure white */ 
+  background-color:  #ffffff;
   padding: 60px 10%;
   border-radius: 8px;
 }
 
+#certifications {
+  position: relative;
+  overflow: hidden;
+}
 
+#certifications::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 90%;
+  height: calc(100% - 60px);
+  transform: translateX(-120%);
+  background: linear-gradient(135deg, rgba(38,198,218,0.14), rgba(38,198,218,0.05) 60%);
+  border: 1px solid rgba(38,198,218,0.25);
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(38,198,218,0.2);
+  z-index: 0;
+  transition: transform 1.2s cubic-bezier(.22,.61,.36,1);
+}
+
+#certifications.visible::before {
+  transform: translateX(-50%);
+}
+
+.cert-grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-grid img {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out, box-shadow 0.3s ease;
+  width: auto;
+  max-width: 140%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+  display: block;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+#certifications.visible .cert-grid img {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cert-grid img:hover {
+  box-shadow: 0 0 18px rgba(38,198,218,0.45);
+  transform: translateY(-3px);
+}
+
+/* --- Services Section --- */
+#services .services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 18px 28px;
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+}
+
+#services .service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(17, 26, 43, 0.7);
+  border: 1px solid rgba(38,198,218,0.25);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(38,198,218,0.15);
+  transform: translateX(-24px);
+  opacity: 0;
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out, box-shadow 0.25s ease;
+}
+
+#services .service-item:hover {
+  box-shadow: 0 0 16px rgba(38,198,218,0.35);
+  transform: translateX(-2px);
+}
+
+#services.visible .service-item {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  #services .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
@@ -209,10 +283,8 @@ section.certifications {
   flex-direction: row;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
-  padding: 40px 10%; /* reduced vertical padding */
+  padding: 40px 10%;
   gap: 40px;
-    overflow: hidden; /* prevents minor jumps */
 }
 
 .hero-text {
@@ -229,110 +301,4 @@ section.certifications {
   max-width: 100%;
   height: auto;
   border-radius: 50%;
-}
-
-
-/* Highlight background and slide-in animation for Certifications */
-#certifications { position: relative; overflow: hidden; }
-#certifications::before {
-  content: "";
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  width: 90%;
-  height: calc(100% - 60px);
-  transform: translateX(-120%);
-  background: linear-gradient(135deg, rgba(38,198,218,0.14), rgba(38,198,218,0.05) 60%);
-  border: 1px solid rgba(38,198,218,0.25);
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(38,198,218,0.2);
-  z-index: 0;
-  transition: transform 1.2s cubic-bezier(.22,.61,.36,1);
-}
-#certifications.visible::before { transform: translateX(-50%); }
-.cert-grid { position: relative; z-index: 1; }
-.cert-grid img { opacity: 0; transform: translateX(-24px); transition: transform 0.8s ease-out, opacity 0.8s ease-out, box-shadow 0.3s ease; }
-#certifications.visible .cert-grid img { opacity: 1; transform: translateX(0); }
-#certifications.visible .cert-grid img:nth-child(1){ transition-delay: .05s; }
-#certifications.visible .cert-grid img:nth-child(2){ transition-delay: .25s; }
-#certifications.visible .cert-grid img:nth-child(3){ transition-delay: .35s; }
-#certifications.visible .cert-grid img:nth-child(4){ transition-delay: .45s; }
-#certifications.visible .cert-grid img:nth-child(5){ transition-delay: .65s; }
-#certifications.visible .cert-grid img:nth-child(6){ transition-delay: .75s; }
-#certifications.visible .cert-grid img:nth-child(7){ transition-delay: .85s; }
-.cert-grid img:hover { box-shadow: 0 0 18px rgba(38,198,218,0.45); transform: translateX(0) translateY(-3px); }
-
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 16px;
-  align-items: center;  /* vertical centering */
-  justify-items: center; /* horizontal centering */
-}
-
-/* Services section: two-column grid with icons and staggered slide-in */
-#services { position: relative; }
-#services .services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
-  gap: 18px 28px;
-  list-style: none;
-  padding-left: 0;
-  margin: 0 auto;
-}
-#services .service-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 16px;
-  background: rgba(17, 26, 43, 0.7);
-  border: 1px solid rgba(38,198,218,0.25);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(38,198,218,0.15);
-  transform: translateX(-24px);
-  opacity: 0;
-  transition: transform 0.7s ease-out, opacity 0.7s ease-out, box-shadow 0.25s ease;
-}
-
-#services .service-item i {
-  color: var(--secondary);
-  font-size: 1.25rem;
-  margin-top: 2px;
-}
-#services .service-item span { line-height: 1.4; }
-#services .service-item:hover { box-shadow: 0 0 16px rgba(38,198,218,0.35); transform: translateX(-2px); }
-#services.visible .service-item { transform: translateX(0); opacity: 1; }
-#services.visible .service-item:nth-child(1) { transition-delay: .05s; }
-#services.visible .service-item:nth-child(2) { transition-delay: .15s; }
-#services.visible .service-item:nth-child(3) { transition-delay: .25s; }
-#services.visible .service-item:nth-child(4) { transition-delay: .35s; }
-#services.visible .service-item:nth-child(5) { transition-delay: .45s; }
-#services.visible .service-item:nth-child(6) { transition-delay: .55s; }
-@media (max-width: 720px) {
-  #services .services-grid { grid-template-columns: 1fr; }
-}
-
-.cert-grid img {
-  width: auto;            /* let width scale naturally */
-  max-width: 140%;        /* prevent stretching */
-  height: auto;          /* fixed height */
-  max-height: 120px;     /* cap tall images */
-  object-fit: contain;    /* keep aspect ratio */
-  display: block;         /* remove inline whitespace issues */
-  padding: 8px;           /* breathing room */
-  border-radius: 8px;
-  background-color: white; /* optional: uniform bg for odd aspect ratios */
-  box-sizing: border-box; /* ensures padding doesn't break height */
-}
-
-.cert-grid {
-  display: flex;              /* instead of grid */
-  flex-wrap: wrap;             /* allow wrapping */
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-}
-
-html {
-  overflow-y: scroll; /* keeps scrollbar space reserved */
 }
