@@ -238,44 +238,78 @@ section.certifications {
 }
 
 /* --- Services Section --- */
-#services .services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
-  gap: 18px 28px;
-  list-style: none;
-  padding-left: 0;
-  margin: 0 auto;
-}
-
-#services .service-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 16px;
-  background: rgba(17, 26, 43, 0.7);
-  border: 1px solid rgba(38,198,218,0.25);
+.cyber-services {
+  width: 100%;
+  background: #0d1117; /* elegant dark base */
+  color: white;
+  padding: 50px 80px;
+  margin-top: 40px; /* gap from previous section */
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(38,198,218,0.15);
-  transform: translateX(-24px);
-  opacity: 0;
-  transition: transform 0.7s ease-out, opacity 0.7s ease-out, box-shadow 0.25s ease;
 }
 
-#services .service-item:hover {
-  box-shadow: 0 0 16px rgba(38,198,218,0.35);
-  transform: translateX(-2px);
+.cyber-services h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #58a6ff; /* highlight color */
 }
 
-#services.visible .service-item {
-  transform: translateX(0);
-  opacity: 1;
+.cyber-services ul {
+  list-style: none; /* remove default bullets */
+  padding: 0;
+  margin: 0;
 }
 
-@media (max-width: 720px) {
-  #services .services-grid {
-    grid-template-columns: 1fr;
+.cyber-services li {
+  position: relative;
+  padding-left: 40px; /* space for custom bullet */
+  margin-bottom: 18px;
+  font-style: italic; /* italic styling */
+  font-size: 1.1rem;
+  opacity: 0; /* start hidden for animation */
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.cyber-services li::before {
+  content: "●"; /* solid bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #58a6ff;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Fade-in one by one with delay */
+.cyber-services li:nth-child(1) { animation-delay: 0.2s; }
+.cyber-services li:nth-child(2) { animation-delay: 0.4s; }
+.cyber-services li:nth-child(3) { animation-delay: 0.6s; }
+.cyber-services li:nth-child(4) { animation-delay: 0.8s; }
+.cyber-services li:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cyber-services {
+    padding: 40px 20px;
+  }
+  .cyber-services h2 {
+    font-size: 1.5rem;
+  }
+  .cyber-services li {
+    font-size: 1rem;
+  }
+}
+
 
 /* Hero Section */
 .hero {
