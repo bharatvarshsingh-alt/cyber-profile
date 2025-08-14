@@ -338,22 +338,25 @@ document.querySelectorAll(
 // Skill bar animation
 const skillsSection = document.getElementById('skills');
 const skills = document.querySelectorAll('.skill');
-function fillSkillBars() {
-  skills.forEach(skill => {
-    const percent = skill.getAttribute('data-skill') || '0';
-    skill.querySelector('.bar-fill').style.width = percent + '%';
-    skill.querySelector('.skill-percent').textContent = percent + '%';
+function animateSkills() {
+  document.querySelectorAll('.skill-fill').forEach(bar => {
+    const percent = bar.getAttribute('data-percent');
+    bar.style.width = percent;
   });
 }
-const skillObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      fillSkillBars();
-      skillObserver.unobserve(skillsSection);
-    }
-  });
-}, { threshold: 0.3 });
-skillObserver.observe(skillsSection);
+
+window.addEventListener('scroll', () => {
+  const skillsSection = document.querySelector('.skills-section');
+  const position = skillsSection.getBoundingClientRect().top;
+  const screenHeight = window.innerHeight;
+  if (position < screenHeight - 50) {
+    animateSkills();
+  }
+});
+
+
+
+  
 </script>
 </body>
 </html>
