@@ -132,9 +132,16 @@
   flex: 0 1 65%;
 }
 
+/* New body container to align bullet list & logo perfectly */
+.company-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
 .company-section .company-image {
   flex: 0 0 auto;
-   margin-top: 32px; /* pushes image down to align with first bullet */
+   margin-top: 0; /* no guesswork */
 }
 
 .company-section .company-image img {
@@ -153,6 +160,12 @@
     align-items: center;
     text-align: left;
   }
+
+  .company-body {
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .company-section .company-text,
   .company-section .company-image {
       margin-top: 20px; /* reset margin for mobile */
