@@ -142,7 +142,8 @@
 .company-section .company-image {
   flex: 0 0 auto;
   margin-top: 0; /* no guesswork */
-  transform: translateY(30px); /* pushes image down */
+  margin-left: -15px; /* adjust this value until it looks perfect */
+  transform: translateY(35px); /* pushes image down */
 }
 
 .company-section .company-image img {
