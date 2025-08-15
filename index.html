@@ -214,7 +214,7 @@ h2 {
     <h2>Technical Lead</h2>
     <h3>HCL Technologies | Apr 2021 - Apr 2022</h3>
     <ul>
-      <li>End-to-End OTA Secure Lifecycle – Designed and Validated Secure Debug, Boot, and Update mechanisms through hands-on POCs.</li>
+      <li>E2E OTA Secure Lifecycle – Designed and Validated Secure Debug, Boot, and Update mechanisms through hands-on POCs.</li>
       <li>Risk-Driven Recommendations – Performed Comprehensive TARA with Remediation Strategies mapped to NIST & OWASP frameworks.</li>
     </ul>
   </div>
@@ -259,7 +259,7 @@ h2 {
     <h2>Technical Executive</h2>
     <h3>Milagrow | Sep 2014 - Dec 2014</h3>
     <ul>
-      <li>Home Cleaning Robot Support – Provided end-to-end troubleshooting, diagnostics, and performance optimization.</li>
+      <li>Home Cleaning Robot Support – Provided E2E troubleshooting, diagnostics, and Performance Optimization.</li>
     </ul>
   </div>
   <div class="company-image">
@@ -346,20 +346,46 @@ document.querySelectorAll(
 
 // Skill bar animation
 const skillsSection = document.getElementById('skills');
-const skills = document.querySelectorAll('.skill');
+const skillBars = document.querySelectorAll('.skill-fill');
+const skillPercents = document.querySelectorAll('.skill-percent');
+
+let skillsAnimated = false; // Prevents re-trigger
+
 function animateSkills() {
-  document.querySelectorAll('.skill-fill').forEach(bar => {
-    const percent = bar.getAttribute('data-percent');
-    bar.style.width = percent;
+  skillBars.forEach((bar, index) => {
+    const percentValue = parseInt(bar.getAttribute('data-percent'));
+    let width = 0;
+    let count = 0;
+
+    // Animate bar fill
+    const fillInterval = setInterval(() => {
+      if (width >= percentValue) {
+        clearInterval(fillInterval);
+      } else {
+        width++;
+        bar.style.width = width + '%';
+      }
+    }, 10); // speed of fill
+
+    // Animate number counter
+    const countInterval = setInterval(() => {
+      if (count >= percentValue) {
+        clearInterval(countInterval);
+      } else {
+        count++;
+        skillPercents[index].textContent = count + '%';
+      }
+    }, 20); // speed of counter
   });
 }
 
 window.addEventListener('scroll', () => {
-  const skillsSection = document.querySelector('.skills-section');
   const position = skillsSection.getBoundingClientRect().top;
   const screenHeight = window.innerHeight;
-  if (position < screenHeight - 50) {
+
+  if (!skillsAnimated && position < screenHeight - 50) {
     animateSkills();
+    skillsAnimated = true; // lock after first animation
   }
 });
 
