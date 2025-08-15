@@ -142,8 +142,8 @@
 .company-section .company-image {
   flex: 0 0 auto;
   margin-top: 0; /* no guesswork */
-  margin-left: -15px; /* adjust this value until it looks perfect */
-  transform: translateY(35px); /* pushes image down */
+  margin-left: -25px; /* adjust this value until it looks perfect */
+  transform: translateY(45px); /* pushes image down */
 }
 
 .company-section .company-image img {
@@ -229,7 +229,7 @@ section.certifications {
 .cert-grid img {
   opacity: 0;
   transform: translateX(-24px);
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out, box-shadow 0.3s ease;
+  transition: transform 2s ease-out, opacity 2s ease-out, box-shadow 2s ease;
   width: auto;
   max-width: 140%;
   height: auto;
@@ -299,11 +299,11 @@ section.certifications {
 }
 
 /* Fade-in one by one with delay */
-.cyber-services li:nth-child(1) { animation-delay: 0.4s; }
-.cyber-services li:nth-child(2) { animation-delay: 0.8s; }
-.cyber-services li:nth-child(3) { animation-delay: 1.2s; }
-.cyber-services li:nth-child(4) { animation-delay: 1.6s; }
-.cyber-services li:nth-child(5) { animation-delay: 2.0s; }
+.cyber-services li:nth-child(1) { animation-delay: 0s; }
+.cyber-services li:nth-child(2) { animation-delay: 2s; }
+.cyber-services li:nth-child(3) { animation-delay: 4s; }
+.cyber-services li:nth-child(4) { animation-delay: 6s; }
+.cyber-services li:nth-child(5) { animation-delay: 8s; }
 
 @keyframes fadeInUp {
   to {
