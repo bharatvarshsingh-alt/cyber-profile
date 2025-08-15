@@ -135,7 +135,7 @@
 /* New body container to align bullet list & logo perfectly */
 .company-body {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
 }
 
@@ -382,6 +382,8 @@ section.certifications {
   margin: 0;
   padding: 0
   flex-wrap: wrap;
+  line-height: 1; /* Prevent extra vertical space */
+  vertical-align: middle;
 }
 
 .skill i {
