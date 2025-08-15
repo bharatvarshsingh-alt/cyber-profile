@@ -136,13 +136,13 @@
 .company-body {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
 }
 
 .company-section .company-image {
   flex: 0 0 auto;
-   margin-top: 0; /* no guesswork */
-  transform: translateY(25px); /* pushes image down */
+  margin-top: 0; /* no guesswork */
+  transform: translateY(30px); /* pushes image down */
 }
 
 .company-section .company-image img {
