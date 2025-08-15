@@ -391,16 +391,3 @@ section.certifications {
   border-radius: 8px;
   transition: width 1.5s ease-out;
 }
-
-.skill-fill[data-skill="blue"] {
-  background: #0077b6; /* Deep blue for core skills */
-}
-
-.skill-fill[data-skill="teal"] {
-  background: #00a896; /* Teal for secondary skills */
-}
-
-.skill-fill[data-skill="gray"] {
-  background: #6c757d; /* Gray for supporting skills */
-}
-
