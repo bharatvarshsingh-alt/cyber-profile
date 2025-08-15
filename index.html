@@ -340,20 +340,7 @@ new Typed('#typed-sub', {
 });
 
   // Fade-in Observer
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      fadeObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
 
-// Elements to observe
-document.querySelectorAll(
-  '.company-section, #certifications, .journey-item, .cyber-services li, .skills'
-).forEach(el => fadeObserver.observe(el));
-  
 
 document.addEventListener("DOMContentLoaded", () => {
   const skills = document.querySelectorAll(".skill");
@@ -388,6 +375,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
   skills.forEach(skill => observer.observe(skill));
 }); 
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init();
+
+// Typed.js
+new Typed('#typed-sub', {
+  strings: [
+    "Cybersecurity Professional",
+    "Automotive Cyber Architect",
+    "ICS/OT Security Expert",
+    "Driving the Global Cyber Community"
+  ],
+  typeSpeed: 50,
+  backSpeed: 30,
+  backDelay: 10000,
+  smartBackspace: true,
+  loop: true,
+  fadeOut: true
+});
+
+// Fade-in Observer with certificate stagger
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      // If this is the certifications section, stagger the logos
+      if (entry.target.id === "certifications") {
+        const certImages = entry.target.querySelectorAll(".cert-grid img");
+        certImages.forEach((img, index) => {
+          setTimeout(() => {
+            img.style.opacity = "1";
+            img.style.transform = "translateY(0)";
+          }, index * 2000); // 2 seconds delay per logo
+        });
+      }
+
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+// Observe sections
+document.querySelectorAll(
+  '.company-section, #certifications, .journey-item, .cyber-services li, .skills'
+).forEach(el => fadeObserver.observe(el));
+
+// Initial hidden state for cert images
+document.querySelectorAll("#certifications .cert-grid img").forEach(img => {
+  img.style.opacity = "0";
+  img.style.transform = "translateY(20px)";
+  img.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+});
+
+// Skills bar animation
+document.addEventListener("DOMContentLoaded", () => {
+  const skills = document.querySelectorAll(".skill");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const skill = entry.target;
+        const fill = skill.querySelector(".bar-fill");
+        const percentElem = skill.querySelector(".skill-percent");
+        const percent = parseInt(skill.dataset.skill, 10);
+
+        // Animate bar fill
+        fill.style.width = percent + "%";
+        fill.classList.add("animate");
+
+        // Animate percentage counting
+        let count = 0;
+        const interval = setInterval(() => {
+          if (count >= percent) {
+            clearInterval(interval);
+          } else {
+            count++;
+            percentElem.textContent = count + "%";
+          }
+        }, 15);
+
+        observer.unobserve(skill);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  skills.forEach(skill => observer.observe(skill));
+});
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
