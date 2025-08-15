@@ -344,50 +344,40 @@ document.querySelectorAll(
 ).forEach(el => fadeObserver.observe(el));
   
 
-// Skill bar animation
-const skillsSection = document.getElementById('skills');
-const skillBars = document.querySelectorAll('.skill-fill');
-const skillPercents = document.querySelectorAll('.skill-percent');
+document.addEventListener("DOMContentLoaded", () => {
+  const skills = document.querySelectorAll(".skill");
 
-let skillsAnimated = false; // Prevents re-trigger
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const skill = entry.target;
+        const fill = skill.querySelector(".bar-fill");
+        const percentElem = skill.querySelector(".skill-percent");
+        const percent = parseInt(skill.dataset.skill, 10);
 
-function animateSkills() {
-  skillBars.forEach((bar, index) => {
-    const percentValue = parseInt(bar.getAttribute('data-percent'));
-    let width = 0;
-    let count = 0;
+        // Animate bar fill
+        fill.style.width = percent + "%";
+        fill.classList.add("animate");
 
-    // Animate bar fill
-    const fillInterval = setInterval(() => {
-      if (width >= percentValue) {
-        clearInterval(fillInterval);
-      } else {
-        width++;
-        bar.style.width = width + '%';
+        // Animate percentage counting
+        let count = 0;
+        const interval = setInterval(() => {
+          if (count >= percent) {
+            clearInterval(interval);
+          } else {
+            count++;
+            percentElem.textContent = count + "%";
+          }
+        }, 15);
+
+        observer.unobserve(skill);
       }
-    }, 10); // speed of fill
+    });
+  }, { threshold: 0.5 });
 
-    // Animate number counter
-    const countInterval = setInterval(() => {
-      if (count >= percentValue) {
-        clearInterval(countInterval);
-      } else {
-        count++;
-        skillPercents[index].textContent = count + '%';
-      }
-    }, 20); // speed of counter
-  });
-}
-
-window.addEventListener('scroll', () => {
-  const position = skillsSection.getBoundingClientRect().top;
-  const screenHeight = window.innerHeight;
-
-  if (!skillsAnimated && position < screenHeight - 50) {
-    animateSkills();
-    skillsAnimated = true; // lock after first animation
-  }
+  skills.forEach(skill => observer.observe(skill));
 });
+
 
 
 
