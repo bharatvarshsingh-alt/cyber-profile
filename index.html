@@ -382,21 +382,11 @@ document.addEventListener("DOMContentLoaded", () => {
 <script>
 AOS.init();
 
-// Typed.js
-new Typed('#typed-sub', {
-  strings: [
-    "Cybersecurity Professional",
-    "Automotive Cyber Architect",
-    "ICS/OT Security Expert",
-    "Driving the Global Cyber Community"
-  ],
-  typeSpeed: 50,
-  backSpeed: 30,
-  backDelay: 10000,
-  smartBackspace: true,
-  loop: true,
-  fadeOut: true
-});
+<div class="permanent-sub">Cybersecurity Professional</div>
+<p class="permanent-sub">
+  Cybersecurity Architect &nbsp;|&nbsp; ICS/OT Security Expert &nbsp;|&nbsp; Automotive Security Maestro 
+</p>
+
 
 // Fade-in Observer with certificate stagger
 const fadeObserver = new IntersectionObserver((entries) => {
@@ -411,7 +401,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
           setTimeout(() => {
             img.style.opacity = "1";
             img.style.transform = "translateY(0)";
-          }, index * 2000); // 2 seconds delay per logo
+          }, index * 500); // 2 seconds delay per logo
         });
       }
 
