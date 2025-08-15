@@ -379,7 +379,8 @@ section.certifications {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 18px 0;
+  margin: 0;
+  padding: 0
   flex-wrap: wrap;
 }
 
