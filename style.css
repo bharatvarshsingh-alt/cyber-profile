@@ -378,7 +378,7 @@ section.certifications {
 .skill {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   padding: 0
   flex-wrap: wrap;
