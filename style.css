@@ -142,6 +142,7 @@
 .company-section .company-image {
   flex: 0 0 auto;
    margin-top: 0; /* no guesswork */
+  transform: translateY(25px); /* pushes image down */
 }
 
 .company-section .company-image img {
@@ -382,8 +383,6 @@ section.certifications {
   margin: 0;
   padding: 0
   flex-wrap: wrap;
-  line-height: 1; /* Prevent extra vertical space */
-  vertical-align: middle;
 }
 
 .skill i {
