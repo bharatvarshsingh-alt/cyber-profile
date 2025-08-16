@@ -230,13 +230,20 @@ h2 {
   gap: 40px;
   opacity: 0;
   transform: translateY(50px) scale(0.9);
-   transition: box-shadow 0.4s;                  /* Smooth hover */
-  border: 1px solid rgba(38, 198, 218, 0.2);
+  transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), 
+            transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94), 
+            box-shadow 0.4s;
+
 }
 
 .company-section.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+.company-section:hover {
+  box-shadow: 0 0 60px 16px rgba(38, 198, 218, 0.38),
+              0 4px 36px rgba(0,20,60,0.30);
 }
 
 .company-section.reverse {
