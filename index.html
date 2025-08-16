@@ -1,149 +1,4 @@
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Skills animation
-  const skills = document.querySelectorAll(".skill");
-  const skillsObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const skill = entry.target;
-        const fill = skill.querySelector(".bar-fill");
-        const percentElem = skill.querySelector(".skill-percent");
-        const percent = parseInt(skill.dataset.skill, 10);
-
-        // Animate bar fill
-        setTimeout(() => {
-          fill.style.width = percent + "%";
-          fill.classList.add("animate");
-        }, 300);
-
-        // Animate percentage counting
-        let count = 0;
-        const interval = setInterval(() => {
-          if (count >= percent) {
-            clearInterval(interval);
-          } else {
-            count++;
-            percentElem.textContent = count + "%";
-          }
-        }, 30);
-
-        skillsObserver.unobserve(skill);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  skills.forEach(skill => skillsObserver.observe(skill));
-
-  // Fade-in animation for general sections
-  const fadeElements = document.querySelectorAll('.fade-in');
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  fadeElements.forEach(el => fadeObserver.observe(el));
-
-  // Company sections animation
-  const companySections = document.querySelectorAll('.company-section');
-  const companyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        companyObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  companySections.forEach(section => companyObserver.observe(section));
-
-  // Certifications animation
-  const certSection = document.querySelector('#certifications');
-  if (certSection) {
-    const certObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          certObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    certObserver.observe(certSection);
-  }
-
-  // Enhanced Cyber Services Animation
-  const cyberServices = document.querySelector('.cyber-services');
-  if (cyberServices) {
-    const serviceItems = cyberServices.querySelectorAll('li');
-    
-    const servicesObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Animate each service item with staggered delay
-          serviceItems.forEach((item, index) => {
-            setTimeout(() => {
-              item.classList.add('animate');
-            }, index * 200); // 200ms delay between each item
-          });
-          servicesObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    servicesObserver.observe(cyberServices);
-  }
-
-  // Particles.js initialization
-  if (typeof tsParticles !== 'undefined') {
-    tsParticles.load("tsparticles", {
-      fpsLimit: 60,
-      background: { color: "transparent" },
-      particles: {
-        number: { value: 50 },
-        color: { value: "#26c6da" },
-        links: {
-          enable: true,
-          color: "#26c6da",
-          distance: 150,
-          opacity: 0.3,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: "none",
-          random: false,
-          straight: false,
-          outModes: "out"
-        },
-        opacity: { 
-          value: 0.4, 
-          animation: { enable: true, speed: 1, minimumValue: 0.2 } 
-        },
-        size: { 
-          value: { min: 1, max: 3 }, 
-          animation: { enable: true, speed: 2, minimumValue: 0.5 } 
-        }
-      },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "grab" },
-          onClick: { enable: true, mode: "push" }
-        },
-        modes: {
-          grab: { distance: 140, links: { opacity: 0.5 } },
-          push: { quantity: 4 }
-        }
-      },
-      detectRetina: true
-    });
-  }
-});
-</script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -159,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   --secondary: #26c6da;
   --text: #ffffff;
   --card-bg: #111a2b;
+  --gradient-start: #26c6da;
+  --gradient-end: #00acc1;
 }
 
 * { 
@@ -245,7 +102,7 @@ header {
   border: 4px solid var(--secondary);
   box-shadow: 0 0 15px var(--secondary);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  background: #333; /* fallback if image doesn't load */
+  background: #333;
 }
 
 .hero-img img:hover {
@@ -268,7 +125,7 @@ h2 {
   font-size: 2rem;
 }
 
-/* Skills Section */
+/* Enhanced Skills Section */
 .skills-container { 
   position: relative; 
 }
@@ -292,10 +149,10 @@ h2 {
 .skill {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   position: relative;
   z-index: 1;
-  gap: 15px;
+  gap: 20px;
 }
 
 .skill i { 
@@ -306,43 +163,75 @@ h2 {
 
 .skill-label {
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
+  font-weight: 600;
 }
 
 .bar {
-  flex: 1;
-  height: 12px;
-  background: #222;
-  border-radius: 6px;
+  flex: 2;
+  height: 20px;
+  background: linear-gradient(90deg, #1a1a2e, #16213e);
+  border-radius: 15px;
   overflow: hidden;
-  max-width: 200px;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+  border: 1px solid rgba(38, 198, 218, 0.3);
 }
 
 .bar-fill {
   height: 100%;
-  background: var(--secondary);
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), #4dd0e1);
   width: 0;
-  transition: width 1.5s ease;
+  transition: width 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(38, 198, 218, 0.5);
+}
+
+.bar-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .skill-percent {
-  min-width: 40px;
+  min-width: 50px;
   text-align: right;
   color: var(--secondary);
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
-/* Company Sections */
+/* Enhanced Company Sections with Auto Animation */
 .company-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   background: var(--card-bg);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  gap: 30px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  gap: 40px;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid rgba(38, 198, 218, 0.2);
+}
+
+.company-section.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .company-section.reverse {
@@ -357,22 +246,24 @@ h2 {
 .company-text h2 {
   text-align: left;
   margin-bottom: 10px;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .current-badge {
-  background: var(--secondary);
+  background: linear-gradient(45deg, var(--secondary), #00acc1);
   color: var(--primary);
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
   font-size: 0.8rem;
   font-weight: bold;
+  box-shadow: 0 2px 8px rgba(38, 198, 218, 0.4);
 }
 
 .company-text h3 {
   color: #ccc;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-weight: normal;
+  font-size: 1.1rem;
 }
 
 .company-text ul {
@@ -381,16 +272,18 @@ h2 {
 }
 
 .company-text li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   position: relative;
-  padding-left: 20px;
+  padding-left: 25px;
+  line-height: 1.6;
 }
 
 .company-text li:before {
-  content: "→";
+  content: "▶";
   color: var(--secondary);
   position: absolute;
   left: 0;
+  font-size: 0.8rem;
 }
 
 .company-image {
@@ -403,55 +296,162 @@ h2 {
 
 .company-image img {
   width: 100%;
-  max-width: 300px;
-  height: 200px;
+  max-width: 320px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid var(--secondary);
-  background: #444; /* fallback */
+  border-radius: 15px;
+  border: 3px solid var(--secondary);
+  background: #444;
+  box-shadow: 0 5px 20px rgba(38, 198, 218, 0.3);
+  transition: transform 0.3s ease;
 }
 
-/* Certifications */
+.company-image img:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* Enhanced Certifications with Catchy Background */
+#certifications {
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  border-radius: 25px;
+  padding: 60px 40px;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#certifications::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(38,198,218,0.1) 0%, transparent 70%);
+  animation: rotateBg 20s linear infinite;
+}
+
+@keyframes rotateBg {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#certifications h2 {
+  position: relative;
+  z-index: 2;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
 }
 
 .cert-grid img {
   width: 100%;
-  height: 120px;
+  height: 140px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(38,198,218,0.3);
-  border: 2px solid var(--secondary);
-  background: #444; /* fallback */
-  transition: transform 0.3s ease, opacity 0.6s ease;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(38,198,218,0.4);
+  border: 3px solid var(--secondary);
+  background: #444;
+  opacity: 0;
+  transform: scale(0.5) rotate(10deg);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cert-grid img.animate {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
 }
 
 .cert-grid img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 0 30px rgba(38,198,218,0.6);
 }
 
-/* Cyber Services */
-.cyber-services ul {
-  list-style: none;
-  padding: 0;
-  max-width: 800px;
+/* Enhanced Cyber Services - Scattered Layout */
+.cyber-services {
+  padding: 60px 20px;
+}
+
+.services-container {
+  max-width: 1000px;
   margin: 0 auto;
+  position: relative;
 }
 
-.cyber-services li {
-  background: var(--card-bg);
-  margin-bottom: 15px;
-  padding: 20px;
-  border-radius: 8px;
-  border-left: 4px solid var(--secondary);
-  transition: transform 0.3s ease;
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-.cyber-services li:hover {
-  transform: translateX(10px);
+.services-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.services-column:nth-child(2) {
+  margin-top: 60px;
+}
+
+.service-item {
+  background: linear-gradient(135deg, var(--card-bg) 0%, #1a2332 100%);
+  padding: 30px;
+  border-radius: 20px;
+  border-left: 5px solid var(--secondary);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateX(-50px) rotate(-5deg);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(38,198,218,0.05), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.service-item:hover::before {
+  transform: translateX(100%);
+}
+
+.services-column:nth-child(2) .service-item {
+  transform: translateX(50px) rotate(5deg);
+}
+
+.service-item.animate {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+.service-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(38,198,218,0.2);
+}
+
+.service-item::after {
+  content: "🛡️";
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  opacity: 0.3;
 }
 
 /* Contact */
@@ -490,6 +490,7 @@ h2 {
   
   .company-section {
     flex-direction: column !important;
+    gap: 20px;
   }
   
   .company-section.reverse {
@@ -498,18 +499,31 @@ h2 {
   
   .skill {
     flex-wrap: wrap;
+    gap: 10px;
   }
   
   .skill-label {
     min-width: 100%;
+  }
+  
+  .bar {
+    min-width: 200px;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-column:nth-child(2) {
+    margin-top: 0;
   }
 }
 
 /* Fade in animation */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
@@ -519,7 +533,6 @@ h2 {
 </style>
 </head>
 <body>
-  <div id="background-animation"></div>
   <div id="tsparticles"></div>
 
 <header>
@@ -578,8 +591,8 @@ h2 {
   </div>
 </section>
 
-<!-- Career Sections -->
-<section class="company-section fade-in">
+<!-- Career Sections with Auto Animation -->
+<section class="company-section" data-delay="0">
   <div class="company-text">
     <h2>Lead Cyber Security Analyst <span class="current-badge">Current</span></h2>
     <h3>Thales | Apr 2022 - Present</h3>
@@ -597,7 +610,7 @@ h2 {
   </div>
 </section>
 
-<section class="company-section reverse fade-in">
+<section class="company-section reverse" data-delay="800">
   <div class="company-text">
     <h2>Technical Lead</h2>
     <h3>HCL Technologies | Apr 2021 - Apr 2022</h3>
@@ -611,7 +624,7 @@ h2 {
   </div>
 </section>
 
-<section class="company-section fade-in">
+<section class="company-section" data-delay="1600">
   <div class="company-text">
     <h2>Senior Security Developer</h2>
     <h3>Marelli India Pvt Ltd | Sep 2018 - Mar 2021</h3>
@@ -627,7 +640,7 @@ h2 {
   </div>
 </section>
 
-<section class="company-section reverse fade-in">
+<section class="company-section reverse" data-delay="2400">
   <div class="company-text">
     <h2>Embedded Research Engineer</h2>
     <h3>The Hi-Tech Robotics Systemz Ltd | Feb 2015 - Sep 2018</h3>
@@ -642,7 +655,7 @@ h2 {
   </div>
 </section>
 
-<section class="company-section fade-in">
+<section class="company-section" data-delay="3200">
   <div class="company-text">
     <h2>Technical Executive</h2>
     <h3>Milagrow | Sep 2014 - Dec 2014</h3>
@@ -655,7 +668,7 @@ h2 {
   </div>
 </section>
 
-<section id="certifications" class="fade-in">
+<section id="certifications">
   <h2>Certifications</h2>
   <div class="cert-grid">
     <img src="cert1.jpg" alt="Certification 1">
@@ -668,16 +681,22 @@ h2 {
   </div>
 </section>
 
-<section class="cyber-services fade-in">
+<section class="cyber-services">
   <h2>Cyber Services Offered</h2>
-  <ul>
-    <li>Domain Specific Risk Assessments & Gap Analysis</li>
-    <li>Regulatory Compliance (ISO 21434, UNECE WP.29, AIS 189/190)</li>
-    <li>Penetration Testing and Vulnerability Assessment</li>
-    <li>OT Compliance (NIST CSF, IEC 62443, NCIIPC, CERT-In)</li>
-    <li>Stakeholder Interactions for Cyber Approvals</li>
-    <li>Customized Cyber Training & Sessions</li>
-  </ul>
+  <div class="services-container">
+    <div class="services-grid">
+      <div class="services-column">
+        <div class="service-item">Domain Specific Risk Assessments & Gap Analysis</div>
+        <div class="service-item">Penetration Testing and Vulnerability Assessment</div>
+        <div class="service-item">Stakeholder Interactions for Cyber Approvals</div>
+      </div>
+      <div class="services-column">
+        <div class="service-item">Regulatory Compliance (ISO 21434, UNECE WP.29, AIS 189/190)</div>
+        <div class="service-item">OT Compliance (NIST CSF, IEC 62443, NCIIPC, CERT-In)</div>
+        <div class="service-item">Customized Cyber Training & Sessions</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="contact" class="fade-in">
@@ -697,7 +716,7 @@ h2 {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // Skills animation
+  // Skills animation with enhanced bars
   const skills = document.querySelectorAll(".skill");
   const skillsObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -707,10 +726,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const percentElem = skill.querySelector(".skill-percent");
         const percent = parseInt(skill.dataset.skill, 10);
 
-        // Animate bar fill
+        // Animate bar fill with enhanced effect
         setTimeout(() => {
           fill.style.width = percent + "%";
-        }, 300);
+        }, 500);
 
         // Animate percentage counting
         let count = 0;
@@ -721,7 +740,7 @@ document.addEventListener("DOMContentLoaded", () => {
             count++;
             percentElem.textContent = count + "%";
           }
-        }, 30);
+        }, 25);
 
         skillsObserver.unobserve(skill);
       }
@@ -730,7 +749,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   skills.forEach(skill => skillsObserver.observe(skill));
 
-  // Fade-in animation
+  // Auto-animate company sections with staggered delays
+  const companySections = document.querySelectorAll('.company-section');
+  
+  const autoAnimateCompanies = () => {
+    companySections.forEach((section, index) => {
+      const delay = parseInt(section.dataset.delay) || index * 800;
+      setTimeout(() => {
+        section.classList.add('visible');
+      }, delay);
+    });
+  };
+
+  // Trigger auto-animation when first company section is in view
+  const firstCompanyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        autoAnimateCompanies();
+        firstCompanyObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  if (companySections.length > 0) {
+    firstCompanyObserver.observe(companySections[0]);
+  }
+
+  // Fade-in animation for general sections
   const fadeElements = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -742,6 +787,50 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.1 });
 
   fadeElements.forEach(el => fadeObserver.observe(el));
+
+  // Certifications sequential animation
+  const certSection = document.querySelector('#certifications');
+  if (certSection) {
+    const certImages = certSection.querySelectorAll('.cert-grid img');
+    
+    const certObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate each certification with staggered delay
+          certImages.forEach((img, index) => {
+            setTimeout(() => {
+              img.classList.add('animate');
+            }, index * 300); // 300ms delay between each cert
+          });
+          certObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    certObserver.observe(certSection);
+  }
+
+  // Enhanced Cyber Services Animation
+  const servicesContainer = document.querySelector('.services-container');
+  if (servicesContainer) {
+    const serviceItems = servicesContainer.querySelectorAll('.service-item');
+    
+    const servicesObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate service items with alternating delays
+          serviceItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('animate');
+            }, index * 200);
+          });
+          servicesObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    servicesObserver.observe(servicesContainer);
+  }
 
   // Particles.js initialization
   if (typeof tsParticles !== 'undefined') {
