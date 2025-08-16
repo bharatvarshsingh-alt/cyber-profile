@@ -771,7 +771,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   const autoAnimateCompanies = () => {
     companySections.forEach((section, index) => {
-      const delay = parseInt(section.dataset.delay) || index * 800;
+      const delay = 800; //parseInt(section.dataset.delay) || index * 800;
       setTimeout(() => {
         section.classList.add('visible');
       }, delay);
@@ -817,7 +817,7 @@ document.addEventListener("DOMContentLoaded", () => {
           certImages.forEach((img, index) => {
             setTimeout(() => {
               img.classList.add('animate');
-            }, index * 500); // Increased to 500ms delay between each cert
+            }, index * 250); // Increased to 500ms delay between each cert
           });
           certObserver.unobserve(entry.target);
         }
