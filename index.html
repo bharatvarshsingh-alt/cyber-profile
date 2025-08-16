@@ -356,6 +356,12 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   }
 }
 
+.cert-grid img.animate {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+
 #certifications::before {
   content: '';
   position: absolute;
@@ -401,7 +407,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   box-shadow: 0 0 20px rgba(38,198,218,0.4);
   border: 3px solid var(--secondary);
   background: #444;
-  opacity: 1;
+  opacity: 0;
   transform: scale(0.5) rotate(10deg);
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
