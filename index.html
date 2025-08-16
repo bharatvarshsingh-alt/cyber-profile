@@ -786,20 +786,19 @@ document.addEventListener("DOMContentLoaded", () => {
 };
 
 
-  // Trigger auto-animation when first company section is in view
-  const firstCompanyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        //autoAnimateCompanies();
-        entry.target.classList.add('visible');  // animate this section
-      observer.unobserve(entry.target);       // stop observing after reveal
-    }
-  });
+ // Trigger auto-animation when first company section is in view
+const firstCompanyObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+autoAnimateCompanies();
+firstCompanyObserver.unobserve(entry.target);
+}
+});
 }, { threshold: 0.2 });
 
-companySections.forEach(section => {
-  companyObserver.observe(section);
-});
+if (companySections.length > 0) {
+firstCompanyObserver.observe(companySections[0]);
+}
 
   // Fade-in animation for general sections
   const fadeElements = document.querySelectorAll('.fade-in');
