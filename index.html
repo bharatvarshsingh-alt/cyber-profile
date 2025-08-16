@@ -501,43 +501,11 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 }
 
 .service-item::after {
+  content: attr(data-icon);
   position: absolute;
   top: 15px;
   right: 20px;
   font-size: 1.5rem;
-  opacity: 1;
-}
-
-.service-item:nth-child(1)::after {
-  content: "🛡️"; /* Pen Testiing */
-}
-
-.service-item:nth-child(2)::after {
-  content: "🛠️"; /* Regulatory Compliance */
-}
-
-.service-item:nth-child(3)::after {
-  content: "🔄"; /* OT Compliance */
-}
-
-.service-item:nth-child(4)::after {
-  content: "🤝"; /* Training */
-}
-
-.service-item:nth-child(5)::after {
-  content: "🔐"; /* ECU Security */
-}
-
-.service-item:nth-child(6)::after {
-  content: "✅"; /* Threat Analysis */
-}
-
-.service-item:nth-child(7)::after {
-  content: "🎓" /* Incident Response */
-}
-
-.service-item:nth-child(8)::after {
-  content: "🛡️" /* Incident Response */
 }
 
 
@@ -773,20 +741,21 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   <div class="services-container">
     <div class="services-grid">
       <div class="services-column">
-        <div class="service-item">Domain Specific Risk Assessments & Gap Analysis</div>
-        <div class="service-item">Penetration Testing and Vulnerability Assessment</div>
-        <div class="service-item">Secure Software Development Lifecycle (SSDLC)</div>
-        <div class="service-item">Stakeholder Interactions for Cyber Approvals</div>
+        <div class="service-item" data-icon="🛡️">Domain Specific Risk Assessments & Gap Analysis</div>
+        <div class="service-item" data-icon="🛠️">Penetration Testing and Vulnerability Assessment</div>
+        <div class="service-item" data-icon="🔄">Secure Software Development Lifecycle (SSDLC)</div>
+        <div class="service-item" data-icon="🤝">Stakeholder Interactions for Cyber Approvals</div>
       </div>
       <div class="services-column">
-        <div class="service-item">Automotive Regulatory Compliance <br> (ISO 21434, UNECE WP.29, AIS 189/190)</div>
-        <div class="service-item">OT Regulatory Compliance <br> (NIST CSF, IEC 62443, NCIIPC, CERT-In)</div>
-        <div class="service-item">Customized Cyber Training & Sessions</div>
-        <div class="service-item">Threat Modelling & Attack Surface Reduction</div>
+        <div class="service-item" data-icon="🛠️">Automotive Regulatory Compliance <br> (ISO 21434, UNECE WP.29, AIS 189/190)</div>
+        <div class="service-item" data-icon="🛠️">OT Regulatory Compliance <br> (NIST CSF, IEC 62443, NCIIPC, CERT-In)</div>
+        <div class="service-item" data-icon="🎓">Customized Cyber Training & Sessions</div>
+        <div class="service-item" data-icon="🔐">Threat Modelling & Attack Surface Reduction</div>
       </div>
     </div>
   </div>
 </section>
+  
 
 <section id="contact" class="fade-in">
   <h2>Contact</h2>
