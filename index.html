@@ -787,22 +787,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   
- // Trigger auto-animation when first company section is in view
-const firstCompanyObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-    entry.target.classList.add('visible'); // trigger fade-in animation
-    autoAnimateCompanies();
-    observer.unobserve(entry.target);       // stop observing once visible
-    //firstCompanyObserver.unobserve(entry.target);
-  }
-});
-  }, { threshold: 0.2 });
+const companySections = document.querySelectorAll('.company-section');
+const totalDuration = 3000; // total duration (ms) for all animations
 
-//companySections.forEach(section => companyObserver.observe(section));
-if (companySections.length > 0) {
-      firstCompanyObserver.observe(companySections[0]);
-}
+const companyObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const index = Array.from(companySections).indexOf(entry.target);
+      const count = companySections.length;
+      const delayBetween = (count > 1) ? totalDuration / (count - 1) : 0;
+      const delay = index * delayBetween;
+
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, delay);
+
+      observer.unobserve(entry.target);  // stop observing after animation
+    }
+  });
+}, { threshold: 0.2 });
+
+companySections.forEach(section => companyObserver.observe(section));
 
 
   
