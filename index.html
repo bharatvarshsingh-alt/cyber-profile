@@ -338,7 +338,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   animation: neonPulse 3s infinite alternate;
 }
 
-  keyframes neonPulse {
+  @keyframes neonPulse {
   0% {
     box-shadow: 0 0 38px 10px rgba(38,215,255,0.23), 
                 0 0 0 6px rgba(17,215,255,0.15) inset;
@@ -368,6 +368,19 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   filter: blur(24px);
   opacity: 0.6;
   z-index: 1;
+}
+
+  /* Optional: On hover, intensify effects */
+#certifications:hover {
+  animation-play-state: paused;
+  box-shadow: 0 0 80px 20px #11d7ff99, 0 0 0 18px #2e3aff55 inset;
+  border-color: #2e3aff;
+}
+
+  /* Optional: animated shimmer for child images */
+.cert-grid img {
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes rotateBg {
@@ -411,7 +424,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   animation: imgShimmer 2.5s infinite alternate;
 }
 
-  keyframes imgShimmer {
+  @keyframes imgShimmer {
   0%   { filter: brightness(1.05) drop-shadow(0 0 8px #11d7ff88); }
   70%  { filter: brightness(1.28) drop-shadow(0 0 20px #2e3affcc); }
   100% { filter: brightness(1.05) drop-shadow(0 0 8px #11d7ff88); }
