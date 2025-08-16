@@ -450,7 +450,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   opacity: 0;
   transform: translateX(-50px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
 
@@ -747,8 +747,8 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
         <div class="service-item" data-icon="🤝">Stakeholder Interactions for Cyber Approvals</div>
       </div>
       <div class="services-column">
-        <div class="service-item" data-icon="🛠️">Automotive Regulatory Compliance <br> (ISO 21434, UNECE WP.29, AIS 189/190)</div>
-        <div class="service-item" data-icon="🛠️">OT Regulatory Compliance <br> (NIST CSF, IEC 62443, NCIIPC, CERT-In)</div>
+        <div class="service-item" data-icon="✅"> Automotive Regulatory Compliance <br> (ISO 21434, UNECE WP.29, AIS 189/190)</div>
+        <div class="service-item" data-icon="✅">OT Regulatory Compliance <br> (NIST CSF, IEC 62443, NCIIPC, CERT-In)</div>
         <div class="service-item" data-icon="🎓">Customized Cyber Training & Sessions</div>
         <div class="service-item" data-icon="🔐">Threat Modelling & Attack Surface Reduction</div>
       </div>
@@ -902,7 +902,7 @@ if (companySections.length > 0) {
           servicesObserver.unobserve(box);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.4 });
   serviceItems.forEach(item => servicesObserver.observe(item));
   //servicesObserver.observe(servicesContainer);
 }
