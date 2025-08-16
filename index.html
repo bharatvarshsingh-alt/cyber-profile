@@ -453,6 +453,13 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+
+  * 🔹 new */
+  height: 140px; /* makes all service cards equal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .service-item::before {
@@ -475,9 +482,17 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   transform: translateX(50px);
 }
 
+  /* Random directions */
+.animate-left   { transform: translateX(-150px); }
+.animate-right  { transform: translateX(150px); }
+.animate-top    { transform: translateY(-150px); }
+.animate-bottom { transform: translateY(150px); }
+.animate-zoom   { transform: scale(0.5); }
+
+/* Final state */
 .service-item.animate {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate(0,0) scale(1);
 }
 
 .service-item:hover {
@@ -863,26 +878,34 @@ if (companySections.length > 0) {
     certObserver.observe(certSection);
   }
 
-  // Enhanced Cyber Services Animation
+  // Enhanced Cyber Services/competencies Animation
   const servicesContainer = document.querySelector('.services-container');
   if (servicesContainer) {
     const serviceItems = servicesContainer.querySelectorAll('.service-item');
+    const directions = ['animate-left', 'animate-right', 'animate-top', 'animate-bottom', 'animate-zoom'];
     
     const servicesObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach(entry, index) => {
         if (entry.isIntersecting) {
+           const box = entry.target;
           // Animate service items with more delay
-          serviceItems.forEach((item, index) => {
+          // pick a random animation direction
+      const randomDir = directions[Math.floor(Math.random() * directions.length)];
+      box.classList.add(randomDir);
+          
+          //serviceItems.forEach((item, index) => {
             setTimeout(() => {
-              item.classList.add('animate');
+              box.classList.add('animate');
             }, index * 400); // Increased to 400ms delay between each service
           });
-          servicesObserver.unobserve(entry.target);
+          servicesObserver.unobserve(box);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
-    servicesObserver.observe(servicesContainer);
+  serviceItems.forEach(item => serviceObserver.observe(item));
+
+    //servicesObserver.observe(servicesContainer);
   }
 
   // Particles.js initialization
