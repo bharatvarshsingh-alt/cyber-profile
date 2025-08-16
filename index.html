@@ -105,15 +105,17 @@ header {
   border: 4px solid var(--secondary);
   box-shadow: 0 0 15px var(--secondary);
   background: #333;
+
   
-  /* Multiple animations: glow + float */
-  animation: pulseGlow 4s infinite alternate, float 6s ease-in-out infinite;
+  /* Glow + Dynamic Float */
+  animation: pulseGlow 4s infinite alternate, floatDynamic 8s ease-in-out infinite;
   transition: transform 0.8s ease, box-shadow 0.8s ease;
+  
  
 }
 
 .hero-img img:hover {
-   /* Smooth tilt + zoom + stronger glow */
+ /* Tilt + Zoom + Stronger Glow */
   transform: scale(1.03) rotate3d(1, 1, 0, 3deg);
   box-shadow: 0 0 30px var(--secondary), 0 0 50px rgba(38,198,218,0.6);
 }
@@ -125,6 +127,15 @@ header {
   to {
     box-shadow: 0 0 25px var(--secondary), 0 0 40px rgba(38,198,218,0.7);
   }
+}
+
+/* More dynamic floating */
+@keyframes floatDynamic {
+  0%   { transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-10px) rotate(-2deg); }
+  50%  { transform: translateY(0) rotate(1.5deg); }
+  75%  { transform: translateY(8px) rotate(-1.5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
 @keyframes float {
