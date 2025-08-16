@@ -10,12 +10,12 @@
 
 <style>
 :root {
-  --primary: #0ff0fc; for a neon cyan 
-  --secondary: #26c6da;
+  --primary: #010a43;         /* Deep blue */
+  --secondary: #11d7ff;       /* Neon cyan */
   --text: #ffffff;
-  --card-bg: #111a2b;
-  --gradient-start: #26c6da;
-  --gradient-end: #00acc1;
+  --card-bg: #1a2332;
+  --gradient-start: #11d7ff;
+  --gradient-end: #2e3aff;
 }
 
 * { 
@@ -887,6 +887,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
+
+<script>
+  window.addEventListener("beforeunload", function () {
+    window.scrollTo(0, 0);
+  });
+</script>
+
+  
 
 </body>
 </html>
