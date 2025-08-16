@@ -528,7 +528,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .hero {
     flex-direction: column;
     text-align: center;
@@ -743,14 +743,14 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
       <div class="services-column">
         <div class="service-item">Domain Specific Risk Assessments & Gap Analysis</div>
         <div class="service-item">Penetration Testing and Vulnerability Assessment</div>
-        <div class="competency-box">Secure Software Development Lifecycle (SSDLC)</div>
+        <div class="service-item">Secure Software Development Lifecycle (SSDLC)</div>
         <div class="service-item">Stakeholder Interactions for Cyber Approvals</div>
       </div>
       <div class="services-column">
         <div class="service-item">Regulatory Compliance (ISO 21434, UNECE WP.29, AIS 189/190)</div>
         <div class="service-item">OT Compliance (NIST CSF, IEC 62443, NCIIPC, CERT-In)</div>
         <div class="service-item">Customized Cyber Training & Sessions</div>
-        <div class="competency-box">Threat Modelling & Attack Surface Reduction</div>
+        <div class="service-item">Threat Modelling & Attack Surface Reduction</div>
       </div>
     </div>
   </div>
@@ -833,7 +833,7 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
     entry.target.classList.add('visible'); // trigger fade-in animation
     autoAnimateCompanies();
-    observer.unobserve(entry.target);       // stop observing once visible
+    firstCompanyObserver.unobserve(entry.target);       // stop observing once visible
 
   }
 });
@@ -894,8 +894,7 @@ if (companySections.length > 0) {
           // pick a random animation direction
       const randomDir = directions[Math.floor(Math.random() * directions.length)];
       box.classList.add(randomDir);
-          
-          //serviceItems.forEach((item, index) => {
+      
               setTimeout(() => {
               box.classList.add('animate');
             }, index * 400); // Increased to 400ms delay between each service
@@ -903,10 +902,9 @@ if (companySections.length > 0) {
         }
       });
     }, { threshold: 0.3 });
-
-  serviceItems.forEach(item => serviceObserver.observe(item));
+  serviceItems.forEach(item => servicesObserver.observe(item));
   //servicesObserver.observe(servicesContainer);
-  }
+}
 
   // Particles.js initialization
   if (typeof tsParticles !== 'undefined') {
