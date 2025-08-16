@@ -894,18 +894,16 @@ if (companySections.length > 0) {
       box.classList.add(randomDir);
           
           //serviceItems.forEach((item, index) => {
-            setTimeout(() => {
+              setTimeout(() => {
               box.classList.add('animate');
             }, index * 400); // Increased to 400ms delay between each service
-          });
           servicesObserver.unobserve(box);
         }
       });
     }, { threshold: 0.3 });
 
   serviceItems.forEach(item => serviceObserver.observe(item));
-
-    //servicesObserver.observe(servicesContainer);
+  //servicesObserver.observe(servicesContainer);
   }
 
   // Particles.js initialization
