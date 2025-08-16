@@ -885,7 +885,7 @@ if (companySections.length > 0) {
     const directions = ['animate-left', 'animate-right', 'animate-top', 'animate-bottom', 'animate-zoom'];
     
     const servicesObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry, index) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
            const box = entry.target;
           // Animate service items with more delay
