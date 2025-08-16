@@ -501,7 +501,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 }
 
 .service-item::after {
-  content: "🛡️";
+  //content: "🛡️";
   position: absolute;
   top: 15px;
   right: 20px;
@@ -510,19 +510,19 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 }
 
 .service-item:nth-child(1)::after {
-  content: "🔐"; /* Pen Testiing */
+  content: "🛡️"; /* Pen Testiing */
 }
 
 .service-item:nth-child(2)::after {
-  content: "⚖️"; /* Regulatory Compliance */
+  content: "🛠️"; /* Regulatory Compliance */
 }
 
 .service-item:nth-child(3)::after {
-  content: "🏭"; /* OT Compliance */
+  content: "🔄"; /* OT Compliance */
 }
 
 .service-item:nth-child(4)::after {
-  content: "🎓"; /* Training */
+  content: "🤝"; /* Training */
 }
 
 .service-item:nth-child(5)::after {
@@ -530,11 +530,15 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 }
 
 .service-item:nth-child(6)::after {
-  content: "🛡️"; /* Threat Analysis */
+  content: "✅"; /* Threat Analysis */
 }
 
 .service-item:nth-child(7)::after {
-  content: "🚨"; /* Incident Response */
+  content: "🎓" /* Incident Response */
+}
+
+.service-item:nth-child(8)::after {
+  content: "🛡️" /* Incident Response */
 }
 
 
@@ -926,7 +930,7 @@ if (companySections.length > 0) {
       
               setTimeout(() => {
               box.classList.add('animate');
-            }, index * 400); // Increased to 400ms delay between each service
+            }, index * 800); // Increased to 400ms delay between each service
           servicesObserver.unobserve(box);
         }
       });
