@@ -324,15 +324,36 @@ h2 {
 
 /* Enhanced Certifications with Catchy Background */
 #certifications {
-background: linear-gradient(135deg, #010a43 0%, #1a2332 50%, #0f1f4f 100%);
-  border-radius: 25px;
+background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
+  border-radius: 28px;
   padding: 60px 40px;
   margin: 40px auto;
   position: relative;
   width: 80%;
   max-width: 1200px;
   overflow: hidden;
-  box-shadow: 0 0 40px 8px rgba(17, 215, 255, 0.18);
+  box-shadow: 0 0 38px 10px rgba(38,215,255,0.23), 
+              0 0 0 6px rgba(17,215,255,0.17) inset;
+  border: 3px solid #11d7ff;
+  animation: neonPulse 3s infinite alternate;
+}
+
+  keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 38px 10px rgba(38,215,255,0.23), 
+                0 0 0 6px rgba(17,215,255,0.15) inset;
+    border-color: #11d7ff;
+  }
+  50% {
+    box-shadow: 0 0 60px 16px rgba(38,215,255,0.33), 
+                0 0 0 10px rgba(17,215,255,0.20) inset;
+    border-color: #2e3aff;
+  }
+  100% {
+    box-shadow: 0 0 38px 10px rgba(38,215,255,0.23), 
+                0 0 0 6px rgba(17,215,255,0.15) inset;
+    border-color: #11d7ff;
+  }
 }
 
 #certifications::before {
@@ -342,10 +363,11 @@ background: linear-gradient(135deg, #010a43 0%, #1a2332 50%, #0f1f4f 100%);
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(17, 215, 255, 0.15) 0%, transparent 70%);
-  animation: rotateBg 25s linear infinite;
-  filter: blur(20px);
-  opacity: 0.8;
+  background: radial-gradient(circle, rgba(17,215,255,0.17) 0%, transparent 70%);
+  animation: rotateBg 18s linear infinite;
+  filter: blur(24px);
+  opacity: 0.6;
+  z-index: 1;
 }
 
 @keyframes rotateBg {
@@ -385,8 +407,14 @@ background: linear-gradient(135deg, #010a43 0%, #1a2332 50%, #0f1f4f 100%);
 }
 
 .cert-grid img.animate {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
+  box-shadow: 0 0 28px rgba(38,215,255,0.4), 0 0 5px #11d7ff;
+  animation: imgShimmer 2.5s infinite alternate;
+}
+
+  keyframes imgShimmer {
+  0%   { filter: brightness(1.05) drop-shadow(0 0 8px #11d7ff88); }
+  70%  { filter: brightness(1.28) drop-shadow(0 0 20px #2e3affcc); }
+  100% { filter: brightness(1.05) drop-shadow(0 0 8px #11d7ff88); }
 }
 
 .cert-grid img:hover {
