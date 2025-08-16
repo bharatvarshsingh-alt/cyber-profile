@@ -6,9 +6,7 @@
 <title>Maharaj Shree Kumar Sood - Cybersecurity Portfolio</title>
 
 <!-- External CSS & Libraries -->
-<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 :root {
@@ -17,18 +15,38 @@
   --text: #ffffff;
   --card-bg: #111a2b;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
 body {
   background-color: var(--primary);
   color: var(--text);
   font-family: Arial, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
+
+#tsparticles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
 header {
   background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
   color: white;
   padding: 60px 20px;
+  position: relative;
+  z-index: 1;
 }
+
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -37,21 +55,43 @@ header {
   max-width: 1200px;
   margin: auto;
 }
-.hero-text { flex: 1 1 55%; }
-.hero-text h1 { font-size: 2.2rem; margin-bottom: 10px; }
-.typed-sub {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--secondary);
-  text-shadow: 0 0 6px rgba(38, 198, 218, 0.8);
-  margin-bottom: 15px;
+
+.hero-text { 
+  flex: 1 1 55%; 
+  min-width: 300px;
 }
-.typed-cursor { display: none; }
+
+.hero-text h1 { 
+  font-size: 2.2rem; 
+  margin-bottom: 10px; 
+}
+
+.static-sub {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--secondary);
+  text-shadow: 0 0 8px rgba(38, 198, 218, 0.9), 0 0 16px rgba(38, 198, 218, 0.6);
+  margin-bottom: 15px;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 8px rgba(38, 198, 218, 0.9), 0 0 16px rgba(38, 198, 218, 0.6);
+  }
+  to {
+    text-shadow: 0 0 12px rgba(38, 198, 218, 1), 0 0 24px rgba(38, 198, 218, 0.8);
+  }
+}
+
 .hero-img {
   flex: 1 1 35%;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
+
 .hero-img img {
   width: 220px;
   height: 280px;
@@ -60,157 +100,345 @@ header {
   border: 4px solid var(--secondary);
   box-shadow: 0 0 15px var(--secondary);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #333; /* fallback if image doesn't load */
 }
+
 .hero-img img:hover {
   transform: rotate3d(1, 1, 0, 6deg) scale(1.05);
   box-shadow: 0 0 25px var(--secondary), 0 0 40px rgba(38, 198, 218, 0.6);
 }
+
 section {
   padding: 50px 20px;
   max-width: 1100px;
   margin: auto;
+  position: relative;
+  z-index: 1;
 }
+
 h2 {
   text-align: center;
   margin-bottom: 30px;
   color: var(--secondary);
+  font-size: 2rem;
 }
-.skills-container { position: relative; }
+
+/* Skills Section */
+.skills-container { 
+  position: relative; 
+}
+
 .radar {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
   background: radial-gradient(circle, rgba(38,198,218,0.15) 10%, transparent 60%);
   background-size: 200% 200%;
   animation: radarSweep 5s linear infinite;
 }
+
 @keyframes radarSweep {
   0% { background-position: 0% 0%; }
   100% { background-position: 100% 100%; }
 }
+
 .skill {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
+  gap: 15px;
 }
-.skill i { font-size: 1.5rem; margin-right: 15px; color: var(--secondary); }
+
+.skill i { 
+  font-size: 1.5rem; 
+  color: var(--secondary);
+  min-width: 24px;
+}
+
+.skill-label {
+  flex: 1;
+  min-width: 200px;
+}
+
 .bar {
   flex: 1;
   height: 12px;
   background: #222;
   border-radius: 6px;
   overflow: hidden;
+  max-width: 200px;
 }
+
 .bar-fill {
   height: 100%;
   background: var(--secondary);
   width: 0;
   transition: width 1.5s ease;
 }
-.timeline-item {
-  position: relative;
-  margin-left: 60px;
-  margin-bottom: 30px;
-  padding: 20px;
+
+.skill-percent {
+  min-width: 40px;
+  text-align: right;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+/* Company Sections */
+.company-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
   background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  gap: 30px;
+}
+
+.company-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.company-text {
+  flex: 1 1 60%;
+  min-width: 300px;
+}
+
+.company-text h2 {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.current-badge {
+  background: var(--secondary);
+  color: var(--primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.company-text h3 {
+  color: #ccc;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+.company-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.company-text li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.company-text li:before {
+  content: "→";
+  color: var(--secondary);
+  position: absolute;
+  left: 0;
+}
+
+.company-image {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+}
+
+.company-image img {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(38,198,218,0.2);
-}
-.timeline-item.current {
   border: 2px solid var(--secondary);
-  animation: pulseGlow 2s infinite;
+  background: #444; /* fallback */
 }
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px var(--secondary); }
-  50% { box-shadow: 0 0 35px var(--secondary); }
-}
+
+/* Certifications */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
 }
+
 .cert-grid img {
   width: 100%;
+  height: 120px;
+  object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(38,198,218,0.3);
+  border: 2px solid var(--secondary);
+  background: #444; /* fallback */
+  transition: transform 0.3s ease, opacity 0.6s ease;
 }
-.contact-info { text-align: center; }
+
+.cert-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Cyber Services */
+.cyber-services ul {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cyber-services li {
+  background: var(--card-bg);
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary);
+  transition: transform 0.3s ease;
+}
+
+.cyber-services li:hover {
+  transform: translateX(10px);
+}
+
+/* Contact */
+.contact-info { 
+  text-align: center; 
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
 .contact-info a {
   color: var(--secondary);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
-.contact-info a:hover { text-decoration: underline; }
+
+.contact-info a:hover { 
+  text-decoration: underline; 
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-text {
+    flex: 1 1 100%;
+  }
+  
+  .hero-img {
+    flex: 1 1 100%;
+    margin-top: 30px;
+  }
+  
+  .company-section {
+    flex-direction: column !important;
+  }
+  
+  .company-section.reverse {
+    flex-direction: column !important;
+  }
+  
+  .skill {
+    flex-wrap: wrap;
+  }
+  
+  .skill-label {
+    min-width: 100%;
+  }
+}
+
+/* Fade in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
-  <div id="background-animation"></div>
   <div id="tsparticles"></div>
-  <style>
-  #tsparticles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* keeps it behind all content */
-    top: 0;
-    left: 0;
-  }
-</style>
+
 <header>
   <div class="hero">
     <div class="hero-text">
       <h1>Maharaj Shree Kumar Sood</h1>
-      <div id="typed-sub" class="typed-sub"></div>
-      <p>Cybersecurity Professional | Automotive Cyber Architect | ICS/OT Security Expert | Driving the Global Cyber Community</p>
+      <div class="static-sub">Cybersecurity Professional | Automotive Cyber Architect | ICS/OT Security Expert</div>
+      <p>Driving the Global Cyber Community with Deep Expertise in Industrial & Automotive Security</p>
     </div>
     <div class="hero-img">
-      <img src="profile.jpg" alt="Profile Picture">
+      <img src="https://via.placeholder.com/220x280/26c6da/ffffff?text=Profile" alt="Profile Picture">
     </div>
   </div>
 </header>
 
-<section id="skills">
+<section id="skills" class="fade-in">
   <h2>Skills</h2>
   <div class="skills-container">
     <div class="radar" aria-hidden="true"></div>
     <div class="skill" data-skill="95">
-      <i class="fas fa-industry"></i><div class="skill-label">ICS/OT Cybersecurity (ISA/IEC 62443)</div>
-      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">95%</div>
+      <i class="fas fa-industry"></i>
+      <div class="skill-label">ICS/OT Cybersecurity (ISA/IEC 62443)</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+      <div class="skill-percent">0%</div>
     </div>
     <div class="skill" data-skill="90">
-      <i class="fas fa-network-wired"></i><div class="skill-label">Industrial Network Security & Risk Assessments</div>
-      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">90%</div>
+      <i class="fas fa-network-wired"></i>
+      <div class="skill-label">Industrial Network Security & Risk Assessments</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+      <div class="skill-percent">0%</div>
     </div>
     <div class="skill" data-skill="85">
-      <i class="fas fa-lock"></i><div class="skill-label">Encryption, Authentication, PKI, TLS</div>
-      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">85%</div>
+      <i class="fas fa-lock"></i>
+      <div class="skill-label">Encryption, Authentication, PKI, TLS</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+      <div class="skill-percent">0%</div>
     </div>
     <div class="skill" data-skill="92">
-      <i class="fas fa-car"></i><div class="skill-label">ISO 21434, ISO 24089, UNECE W.P.29, AIS189/190</div>
-      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">92%</div>
+      <i class="fas fa-car"></i>
+      <div class="skill-label">ISO 21434, ISO 24089, UNECE W.P.29, AIS189/190</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+      <div class="skill-percent">0%</div>
     </div>
     <div class="skill" data-skill="88">
-      <i class="fas fa-shield-alt"></i><div class="skill-label">Secure Architecture for SCADA, DCS, IIoT</div>
-      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">88%</div>
+      <i class="fas fa-shield-alt"></i>
+      <div class="skill-label">Secure Architecture for SCADA, DCS, IIoT</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+      <div class="skill-percent">0%</div>
     </div>
     <div class="skill" data-skill="87">
-      <i class="fas fa-file-contract"></i><div class="skill-label">Compliance (RED, NERC CIP, NCIIPC, CRA)</div>
-      <div class="bar"><div class="bar-fill"></div></div><div class="skill-percent">87%</div>
+      <i class="fas fa-file-contract"></i>
+      <div class="skill-label">Compliance (RED, NERC CIP, NCIIPC, CRA)</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+      <div class="skill-percent">0%</div>
     </div>
   </div>
 </section>
 
-
-
 <!-- Career Sections -->
-  
-<section class="company-section">
+<section class="company-section fade-in">
   <div class="company-text">
     <h2>Lead Cyber Security Analyst <span class="current-badge">Current</span></h2>
     <h3>Thales | Apr 2022 - Present</h3>
     <ul>
-      <li>Delivering Secure-by-Design Principles and Defense-in-Depth strategies from Concept -> decommissioning.</li>
+      <li>Delivering Secure-by-Design Principles and Defense-in-Depth strategies from Concept → decommissioning.</li>
       <li>Embedding Compliance Requirements for Homologation Activities.</li>
       <li>Conducting Comprehensive Vehicle-level Cybersecurity Risk Assessments.</li>
       <li>Executing Risk assessments, Vulnerability Scans, and architecture reviews for OT/ICS.</li>
@@ -218,9 +446,12 @@ h2 {
       <li>Designing and Executing Penetration tests on Automotive ECUs.</li>
     </ul>
   </div>
-  <div class="company-image"><img src="thales.jpg" alt="Thales Work"></div>
+  <div class="company-image">
+    <img src="https://via.placeholder.com/300x200/26c6da/ffffff?text=Thales" alt="Thales Work">
+  </div>
 </section>
-<section class="company-section reverse">
+
+<section class="company-section reverse fade-in">
   <div class="company-text">
     <h2>Technical Lead</h2>
     <h3>HCL Technologies | Apr 2021 - Apr 2022</h3>
@@ -230,27 +461,27 @@ h2 {
     </ul>
   </div>
   <div class="company-image">
-    <img src="hcl.jpg" alt="HCL Work">
+    <img src="https://via.placeholder.com/300x200/26c6da/ffffff?text=HCL+Tech" alt="HCL Work">
   </div>
 </section>
 
-<section class="company-section">
+<section class="company-section fade-in">
   <div class="company-text">
     <h2>Senior Security Developer</h2>
     <h3>Marelli India Pvt Ltd | Sep 2018 - Mar 2021</h3>
     <ul>
       <li>Remote Keyless Security – Delivered secure provisioning and remote key fob solutions with robust cryptographic protection.</li>
-      <li>Advanced Anti-Theft Mechanisms – Integrated ignition lock, PEPS, and immobilizer safeguards for enhanced vehicle security.></li>
-        <li>Scalable Software Architecture – Developed architecture blueprints in Enterprise Architect to support complex ECU ecosystems.</li>
-        <li>Standards-First Development – Embedded safety and security best practices per ISO 26262, MISRA, and CERT-C.</li>
+      <li>Advanced Anti-Theft Mechanisms – Integrated ignition lock, PEPS, and immobilizer safeguards for enhanced vehicle security.</li>
+      <li>Scalable Software Architecture – Developed architecture blueprints in Enterprise Architect to support complex ECU ecosystems.</li>
+      <li>Standards-First Development – Embedded safety and security best practices per ISO 26262, MISRA, and CERT-C.</li>
     </ul>
   </div>
   <div class="company-image">
-    <img src="marelli.jpg" alt="Marelli Work">
+    <img src="https://via.placeholder.com/300x200/26c6da/ffffff?text=Marelli" alt="Marelli Work">
   </div>
 </section>
 
-<section class="company-section reverse">
+<section class="company-section reverse fade-in">
   <div class="company-text">
     <h2>Embedded Research Engineer</h2>
     <h3>The Hi-Tech Robotics Systemz Ltd | Feb 2015 - Sep 2018</h3>
@@ -261,11 +492,11 @@ h2 {
     </ul>
   </div>
   <div class="company-image">
-    <img src="hitech.jpg" alt="Hi-Tech Robotics Work">
+    <img src="https://via.placeholder.com/300x200/26c6da/ffffff?text=Hi-Tech+Robotics" alt="Hi-Tech Robotics Work">
   </div>
 </section>
 
-<section class="company-section">
+<section class="company-section fade-in">
   <div class="company-text">
     <h2>Technical Executive</h2>
     <h3>Milagrow | Sep 2014 - Dec 2014</h3>
@@ -274,26 +505,24 @@ h2 {
     </ul>
   </div>
   <div class="company-image">
-    <img src="milagrow.jpg" alt="Milagrow Work">
+    <img src="https://via.placeholder.com/300x200/26c6da/ffffff?text=Milagrow" alt="Milagrow Work">
   </div>
 </section>
 
-
-
-<section id="certifications">
+<section id="certifications" class="fade-in">
   <h2>Certifications</h2>
   <div class="cert-grid">
-    <img src="cert1.jpg" alt="Certification 1">
-    <img src="cert2.jpg" alt="Certification 2">
-    <img src="cert3.jpg" alt="Certification 3">
-    <img src="cert4.jpg" alt="Certification 4">
-    <img src="cert5.jpg" alt="Certification 5">
-    <img src="cert6.jpg" alt="Certification 6">
-    <img src="cert7.jpg" alt="Certification 7">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+1" alt="Certification 1">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+2" alt="Certification 2">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+3" alt="Certification 3">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+4" alt="Certification 4">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+5" alt="Certification 5">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+6" alt="Certification 6">
+    <img src="https://via.placeholder.com/150x120/26c6da/ffffff?text=Cert+7" alt="Certification 7">
   </div>
 </section>
 
-<section class="cyber-services">
+<section class="cyber-services fade-in">
   <h2>Cyber Services Offered</h2>
   <ul>
     <li>Domain Specific Risk Assessments & Gap Analysis</li>
@@ -305,215 +534,116 @@ h2 {
   </ul>
 </section>
 
-<section id="contact">
+<section id="contact" class="fade-in">
   <h2>Contact</h2>
   <div class="contact-info">
     <p>
       📍 Gurgaon, Haryana, India<br>
       📞 <a href="tel:+919711391314">+91-9711391314</a><br>
       ✉️ <a href="mailto:bharatvarshsingh@gmail.com">bharatvarshsingh@gmail.com</a><br>
-      🔗 <a href="https://www.linkedin.com/in/maharaj-sood-94435230/">LinkedIn</a>
+      🔗 <a href="https://www.linkedin.com/in/maharaj-sood-94435230/" target="_blank">LinkedIn</a>
     </p>
   </div>
 </section>
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-
-  // Fade-in Observer
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const skills = document.querySelectorAll(".skill");
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const skill = entry.target;
-        const fill = skill.querySelector(".bar-fill");
-        const percentElem = skill.querySelector(".skill-percent");
-        const percent = parseInt(skill.dataset.skill, 10);
-
-        // Animate bar fill
-        fill.style.width = percent + "%";
-        fill.classList.add("animate");
-
-        // Animate percentage counting
-        let count = 0;
-        const interval = setInterval(() => {
-          if (count >= percent) {
-            clearInterval(interval);
-          } else {
-            count++;
-            percentElem.textContent = count + "%";
-          }
-        }, 15);
-
-        observer.unobserve(skill);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  skills.forEach(skill => observer.observe(skill));
-}); 
-</script>
-
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-
-<div class="permanent-sub">Cybersecurity Professional</div>
-<p class="permanent-sub">
-  Cybersecurity Architect &nbsp;|&nbsp; ICS/OT Security Expert &nbsp;|&nbsp; Automotive Security Maestro 
-</p>
-
-
-// Fade-in Observer with certificate stagger
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-
-      // If this is the certifications section, stagger the logos
-      if (entry.target.id === "certifications") {
-        const certImages = entry.target.querySelectorAll(".cert-grid img");
-        certImages.forEach((img, index) => {
-          setTimeout(() => {
-            img.style.opacity = "1";
-            img.style.transform = "translateY(0)";
-          }, index * 500); // 2 seconds delay per logo
-        });
-      }
-
-      fadeObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-// Observe sections
-document.querySelectorAll(
-  '.company-section, #certifications, .journey-item, .cyber-services li, .skills'
-).forEach(el => fadeObserver.observe(el));
-
-// Initial hidden state for cert images
-document.querySelectorAll("#certifications .cert-grid img").forEach(img => {
-  img.style.opacity = "0";
-  img.style.transform = "translateY(20px)";
-  img.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-});
-
-// Skills bar animation
-document.addEventListener("DOMContentLoaded", () => {
-  const skills = document.querySelectorAll(".skill");
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const skill = entry.target;
-        const fill = skill.querySelector(".bar-fill");
-        const percentElem = skill.querySelector(".skill-percent");
-        const percent = parseInt(skill.dataset.skill, 10);
-
-        // Animate bar fill
-        fill.style.width = percent + "%";
-        fill.classList.add("animate");
-
-        // Animate percentage counting
-        let count = 0;
-        const interval = setInterval(() => {
-          if (count >= percent) {
-            clearInterval(interval);
-          } else {
-            count++;
-            percentElem.textContent = count + "%";
-          }
-        }, 15);
-
-        observer.unobserve(skill);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  skills.forEach(skill => observer.observe(skill));
-});
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
 <script>
-tsParticles.load("tsparticles", {
-  fpsLimit: 60,
-  background: { color: "#0a192f" }, // your dark cyber background
-  particles: {
-    number: { value: 70 }, // network particles
-    color: { value: "#64ffda" },
-    links: {
-      enable: true,
-      color: "#64ffda",
-      distance: 150,
-      opacity: 0.35,
-      width: 1.5
-    },
-    move: {
-      enable: true,
-      speed: 1.8,
-      direction: "none",
-      random: false,
-      straight: false,
-      outModes: "out"
-    },
-    opacity: { value: 0.5, animation: { enable: true, speed: 1, minimumValue: 0.3 } },
-    size: { value: { min: 2, max: 4 }, animation: { enable: true, speed: 2, minimumValue: 1 } }
-  },
-  interactivity: {
-    events: {
-      onHover: { enable: true, mode: "grab" },
-      onClick: { enable: true, mode: "push" }
-    },
-    modes: {
-      grab: { distance: 140, links: { opacity: 0.5 } },
-      push: { quantity: 4 }
-    }
-  },
-  detectRetina: true,
-  emitters: [
-    {
-      position: { x: 0, y: 50 }, // left side
-      rate: { delay: 10, quantity: 1 }, // one every 10s
-      particles: {
-        size: { value: 6 },
-        color: { value: "#00ffff" },
-        move: {
-          speed: 2,
-          direction: "right",
-          straight: false,
-          outModes: { default: "out" },
-          trail: { enable: true, length: 8, fillColor: "#0a192f" }
-        },
-        opacity: { value: 0.8 }
+document.addEventListener("DOMContentLoaded", () => {
+  // Skills animation
+  const skills = document.querySelectorAll(".skill");
+  const skillsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const skill = entry.target;
+        const fill = skill.querySelector(".bar-fill");
+        const percentElem = skill.querySelector(".skill-percent");
+        const percent = parseInt(skill.dataset.skill, 10);
+
+        // Animate bar fill
+        setTimeout(() => {
+          fill.style.width = percent + "%";
+        }, 300);
+
+        // Animate percentage counting
+        let count = 0;
+        const interval = setInterval(() => {
+          if (count >= percent) {
+            clearInterval(interval);
+          } else {
+            count++;
+            percentElem.textContent = count + "%";
+          }
+        }, 30);
+
+        skillsObserver.unobserve(skill);
       }
-    },
-    {
-      position: { x: 100, y: 20 }, // right side
-      rate: { delay: 15, quantity: 1 }, // one every 15s
-      particles: {
-        size: { value: 6 },
-        color: { value: "#ff00ff" },
-        move: {
-          speed: 2,
-          direction: "left",
-          straight: false,
-          outModes: { default: "out" },
-          trail: { enable: true, length: 8, fillColor: "#0a192f" }
-        },
-        opacity: { value: 0.8 }
+    });
+  }, { threshold: 0.5 });
+
+  skills.forEach(skill => skillsObserver.observe(skill));
+
+  // Fade-in animation
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
       }
-    }
-  ]
+    });
+  }, { threshold: 0.1 });
+
+  fadeElements.forEach(el => fadeObserver.observe(el));
+
+  // Particles.js initialization
+  if (typeof tsParticles !== 'undefined') {
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 50 },
+        color: { value: "#26c6da" },
+        links: {
+          enable: true,
+          color: "#26c6da",
+          distance: 150,
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          random: false,
+          straight: false,
+          outModes: "out"
+        },
+        opacity: { 
+          value: 0.4, 
+          animation: { enable: true, speed: 1, minimumValue: 0.2 } 
+        },
+        size: { 
+          value: { min: 1, max: 3 }, 
+          animation: { enable: true, speed: 2, minimumValue: 0.5 } 
+        }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 140, links: { opacity: 0.5 } },
+          push: { quantity: 4 }
+        }
+      },
+      detectRetina: true
+    });
+  }
 });
 </script>
+
 </body>
 </html>
