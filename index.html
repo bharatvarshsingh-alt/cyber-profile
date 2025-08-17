@@ -921,6 +921,7 @@ if (companySections.length > 0) {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
            const box = entry.target;
+           const idx = parseInt(box.dataset.index, 10); // get stored index
           // Animate service items with more delay
           // pick a random animation direction
       const randomDir = directions[Math.floor(Math.random() * directions.length)];
@@ -928,13 +929,17 @@ if (companySections.length > 0) {
       
               setTimeout(() => {
               box.classList.add('animate');
-            }, index * 800); // Increased to 400ms delay between each service
+            }, idx  * 800); // Increased to 400ms delay between each service
           servicesObserver.unobserve(box);
         }
       });
     }, { threshold: 0.4 });
-  serviceItems.forEach(item => servicesObserver.observe(item));
-  //servicesObserver.observe(servicesContainer);
+
+    // Store each item's absolute index before observing
+   serviceItems.forEach((item, idx) => {
+    item.dataset.index = idx;
+    servicesObserver.observe(item);
+  });
 }
 
   // Particles.js initialization
