@@ -520,8 +520,8 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr; /* CHANGE TO SINGLE COLUMN */
-  gap: 25px;
+  grid-template-columns: 1fr 1fr; /* RESTORE 2 COLUMNS */
+  gap: 40px;
   align-items: start;
 }
 
@@ -670,11 +670,12 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   }
   
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* SINGLE COLUMN ON MOBILE */
+    gap: 20px;
   }
   
   .services-column:nth-child(2) {
-    margin-top: 0;
+    margin-top: 0; /* REMOVE OFFSET ON MOBILE */
   }
 }
   
