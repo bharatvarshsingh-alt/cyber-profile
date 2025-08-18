@@ -1022,7 +1022,7 @@ companySections.forEach(section => companyObserver.observe(section));
       
               setTimeout(() => {
               box.classList.add('animate');
-            }, idx  * 500); // Increased to 400ms delay between each service
+            }, idx  * 350); // Increased to 400ms delay between each service
           servicesObserver.unobserve(box);
         }
       });
@@ -1092,7 +1092,7 @@ companySections.forEach(section => companyObserver.observe(section));
   window.addEventListener("load", function () {
     setTimeout(() => {
       window.scrollTo(0, 0);
-    }, 2500); // delay in milliseconds
+    }, 1000); // delay in milliseconds
   });
 </script>
 
