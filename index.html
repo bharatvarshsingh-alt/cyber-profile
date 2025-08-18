@@ -696,6 +696,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   transform: translateY(0);
 }
 </style>
+  
 </head>
 <body>
   <div id="tsparticles"></div>
@@ -1086,7 +1087,9 @@ companySections.forEach(section => companyObserver.observe(section));
 
 <script>
   window.addEventListener("load", function () {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 150); // delay in milliseconds
   });
 </script>
 
