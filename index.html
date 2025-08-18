@@ -690,8 +690,8 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 /* Fade in animation */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .fade-in.visible {
@@ -994,7 +994,7 @@ companySections.forEach(section => companyObserver.observe(section));
           certImages.forEach((img, index) => {
             setTimeout(() => {
               img.classList.add('animate');
-            }, index * 300); // Increased to 500ms delay between each cert
+            }, index * 400); // Increased to 500ms delay between each cert
           });
           certObserver.unobserve(entry.target);
         }
