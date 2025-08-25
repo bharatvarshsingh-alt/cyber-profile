@@ -1,0 +1,14 @@
+# robots.txt for securewithshree.com
+# Allow all search engines to crawl the public pages
+
+User-agent: *
+Allow: /
+
+# Block sensitive or irrelevant paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /tmp/
+Disallow: /private/
+
+# Point to sitemap for better indexing
+Sitemap: https://securewithshree.com/sitemap.xml
