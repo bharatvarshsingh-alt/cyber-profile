@@ -685,14 +685,17 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   }
   
   .services-column:nth-child(2) {
-    margin-top: 0; /* REMOVE OFFSET ON MOBILE */
+    margin-top: 0 !important; /* REMOVE OFFSET ON MOBILE */
   }
 }
   
 @media (max-width: 480px) {
   .service-item {
-    height: auto; /* Allow flexible height on mobile */
-    min-height: 100px; /* Minimum height */
+   box-sizing: border-box;
+    width: 100%;             /* Ensures the item uses full width */
+    height: auto !important; /* Overrides fixed height if set elsewhere */
+    min-height: 100px;
+    margin: 0 0 15px 0;      /* Optional: adds space between items */
     padding: 20px 15px;
   }
 }
