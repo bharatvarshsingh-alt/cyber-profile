@@ -543,7 +543,7 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
 }
 
 .services-column:nth-child(2) {
-  margin-top: 60px;
+  margin-top: 0 !important
 }
 
 .service-item {
@@ -691,8 +691,9 @@ background: linear-gradient(135deg, #0b1320 0%, #1a2332 60%, #2e3aff 100%);
   
 @media (max-width: 480px) {
   .service-item {
+    height: auto; /* Allow flexible height on mobile */
+    min-height: 100px; /* Minimum height */
     padding: 20px 15px;
-    min-height: 100px;
   }
 }
   
