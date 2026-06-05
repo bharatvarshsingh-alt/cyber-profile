@@ -596,32 +596,96 @@ h2.section-title {
 /* ── CERTIFICATIONS ─────────────────────── */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
 }
-.cert-item {
+.cert-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  padding: 1.5rem 1.6rem;
+  position: relative;
   overflow: hidden;
-  aspect-ratio: 4/3;
-  opacity: 0;
-  transform: scale(0.94) translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.cert-item.visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+.cert-card:hover {
+  box-shadow: 0 8px 28px rgba(13,17,23,0.09);
+  transform: translateY(-3px);
 }
-.cert-item:hover {
-  box-shadow: 0 8px 28px rgba(13,17,23,0.10);
-  transform: scale(1.02) translateY(-2px);
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 14px 14px 0 0;
 }
-.cert-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.cert-card.tuv::before    { background: #0059A4; }
+.cert-card.isc2::before   { background: #007C4D; }
+.cert-card.ibm::before    { background: #054ADA; }
+.cert-card.cisco::before  { background: #049FD9; }
+.cert-card.omnex::before  { background: #E87722; }
+.cert-card.nist::before   { background: #1B3A5C; }
+.cert-card.certin::before { background: #C62828; }
+
+.cert-issuer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+.cert-issuer-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.cert-issuer-name.tuv    { color: #0059A4; }
+.cert-issuer-name.isc2   { color: #007C4D; }
+.cert-issuer-name.ibm    { color: #054ADA; }
+.cert-issuer-name.cisco  { color: #049FD9; }
+.cert-issuer-name.omnex  { color: #E87722; }
+.cert-issuer-name.nist   { color: #1B3A5C; }
+.cert-issuer-name.certin { color: #C62828; }
+
+.cert-issuer-sub {
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+.cert-badge {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+.cert-badge.tuv    { background: #E8F0FA; color: #0059A4; }
+.cert-badge.isc2   { background: #E6F5EE; color: #007C4D; }
+.cert-badge.ibm    { background: #E8EEFF; color: #054ADA; }
+.cert-badge.cisco  { background: #E5F6FC; color: #049FD9; }
+.cert-badge.omnex  { background: #FDF1E6; color: #E87722; }
+.cert-badge.nist   { background: #E9EDF2; color: #1B3A5C; }
+.cert-badge.certin { background: #FCEAEA; color: #C62828; }
+
+.cert-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+.cert-detail {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 /* ── THOUGHT LEADERSHIP ─────────────────── */
@@ -779,7 +843,7 @@ footer a:hover { color: var(--ink-faint); }
 }
 @media(max-width: 600px) {
   .stats-inner { grid-template-columns: 1fr 1fr; }
-  .cert-grid { grid-template-columns: repeat(3, 1fr); }
+  .cert-grid { grid-template-columns: 1fr; }
 }
 
 /* ── ANIMATIONS ──────────────────────────── */
@@ -991,19 +1055,6 @@ nav.scrolled { height: 52px; box-shadow: 0 1px 16px rgba(13,17,23,0.07); }
 .exp-item.visible {
   opacity: 1;
   transform: translate(0,0);
-}
-
-/* Cert items */
-.cert-item {
-  opacity: 0;
-  transform: scale(0.7) translateY(20px);
-  transition: opacity 1.6s var(--ease-drag),
-              transform 1.6s var(--ease-drag),
-              box-shadow 0.3s ease;
-}
-.cert-item.visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
 }
 
 /* Contact shimmer */
@@ -1442,15 +1493,104 @@ nav.scrolled { height: 52px; box-shadow: 0 1px 16px rgba(13,17,23,0.07); }
   <div class="section-label reveal-left">Credentials</div>
   <h2 class="section-title reveal-left">Certifications</h2>
   <p class="section-sub reveal-left">Validated expertise across automotive cybersecurity, ICS/OT security, and information security frameworks.</p>
-  <div class="cert-grid stagger-scale">
-    <div class="cert-item"><img src="cert1.jpg" alt="Certified in Cybersecurity (CC)" loading="lazy"></div>
-    <div class="cert-item"><img src="cert2.jpg" alt="TÜV SÜD ISO/IEC 27001:2022 Lead Auditor" loading="lazy"></div>
-    <div class="cert-item"><img src="cert3.jpg" alt="TÜV SÜD Certified IEC 62443 Professional" loading="lazy"></div>
-    <div class="cert-item"><img src="cert4.jpg" alt="Cisco Certified Cybersecurity Essentials" loading="lazy"></div>
-    <div class="cert-item"><img src="cert5.jpg" alt="IBM Certified Cybersecurity Analyst" loading="lazy"></div>
-    <div class="cert-item"><img src="cert6.jpg" alt="OMNEX Certified ISO 21434 Automotive Cyber Professional" loading="lazy"></div>
-    <div class="cert-item"><img src="cert7.jpg" alt="Certified NIST CSF Lead Implementer" loading="lazy"></div>
-    <div class="cert-item"><img src="cert8.jpg" alt="TÜV SÜD ISO/IEC 27001:2022 Lead Auditor Certificate" loading="lazy"></div>
+  <div class="cert-grid stagger-alt">
+
+    <div class="cert-card tuv">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name tuv">TÜV SÜD</div>
+          <div class="cert-issuer-sub">South Asia · Certification of Persons</div>
+        </div>
+        <div class="cert-badge tuv"><i class="fas fa-shield-alt"></i></div>
+      </div>
+      <div class="cert-name">ISO/IEC 27001:2022 Lead Auditor</div>
+      <div class="cert-detail">Auditor/Lead Auditor — Information Security, Cybersecurity & Privacy Protection (ISMS)</div>
+    </div>
+
+    <div class="cert-card tuv">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name tuv">TÜV SÜD</div>
+          <div class="cert-issuer-sub">South Asia · Certification of Persons</div>
+        </div>
+        <div class="cert-badge tuv"><i class="fas fa-shield-alt"></i></div>
+      </div>
+      <div class="cert-name">Certified IEC 62443 Cybersecurity Professional</div>
+      <div class="cert-detail">Industrial cybersecurity competence validated across the IEC 62443 standards framework</div>
+    </div>
+
+    <div class="cert-card omnex">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name omnex">OMNEX</div>
+          <div class="cert-issuer-sub">Automotive Cybersecurity Certification</div>
+        </div>
+        <div class="cert-badge omnex"><i class="fas fa-car"></i></div>
+      </div>
+      <div class="cert-name">ISO/SAE 21434 Automotive Cybersecurity Engineer</div>
+      <div class="cert-detail">Automotive cybersecurity engineering competence — Level 1 qualification</div>
+    </div>
+
+    <div class="cert-card nist">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name nist">ITCERTS</div>
+          <div class="cert-issuer-sub">NIST Framework Certification</div>
+        </div>
+        <div class="cert-badge nist"><i class="fas fa-layer-group"></i></div>
+      </div>
+      <div class="cert-name">NIST Cybersecurity Framework Lead Implementer</div>
+      <div class="cert-detail">Certified to lead NIST CSF 2.0 implementation across enterprise and OT environments</div>
+    </div>
+
+    <div class="cert-card isc2">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name isc2">ISC²</div>
+          <div class="cert-issuer-sub">International Information System Security</div>
+        </div>
+        <div class="cert-badge isc2"><i class="fas fa-check-circle"></i></div>
+      </div>
+      <div class="cert-name">Certified in Cybersecurity (CC)</div>
+      <div class="cert-detail">Foundational cybersecurity certification from the world's largest IT security organisation</div>
+    </div>
+
+    <div class="cert-card ibm">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name ibm">IBM</div>
+          <div class="cert-issuer-sub">Professional Certificate · Coursera</div>
+        </div>
+        <div class="cert-badge ibm"><i class="fas fa-certificate"></i></div>
+      </div>
+      <div class="cert-name">IBM Cybersecurity Analyst Professional Certificate</div>
+      <div class="cert-detail">Security operations, incident response, threat intelligence, and compliance analytics</div>
+    </div>
+
+    <div class="cert-card cisco">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name cisco">CISCO</div>
+          <div class="cert-issuer-sub">Networking Academy · Verified</div>
+        </div>
+        <div class="cert-badge cisco"><i class="fas fa-network-wired"></i></div>
+      </div>
+      <div class="cert-name">Cybersecurity Essentials</div>
+      <div class="cert-detail">Network security fundamentals, cryptography, and endpoint protection</div>
+    </div>
+
+    <div class="cert-card certin">
+      <div class="cert-issuer">
+        <div>
+          <div class="cert-issuer-name certin">Cert-In × FCRF</div>
+          <div class="cert-issuer-sub">Government of India · Future Crime Research Foundation</div>
+        </div>
+        <div class="cert-badge certin"><i class="fas fa-exclamation-triangle"></i></div>
+      </div>
+      <div class="cert-name">Certified Cyber Crisis Management Professional</div>
+      <div class="cert-detail">CCMP — national-level cyber crisis response and management certification</div>
+    </div>
+
   </div>
 </div>
 
@@ -1609,20 +1749,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.5 });
   if (statNums.length) statsObs.observe(statNums[0].closest('.stats-inner'));
-
-  // ── Certifications staggered pop-in ───────
-  const certItems = document.querySelectorAll('.cert-item');
-  const certObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        certItems.forEach((el, i) => {
-          setTimeout(() => el.classList.add('visible'), i * 120);
-        });
-        certObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  if (certItems.length) certObs.observe(document.querySelector('.cert-grid'));
 
   // ── Contact links reveal ──────────────────
   const contactLinks = document.querySelector('.contact-links');
