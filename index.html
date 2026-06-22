@@ -165,7 +165,7 @@ header::after{
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
 
 .hero-photo{position:relative;}
-.photo-shell{position:relative;opacity:0;transform:translateY(40px) scale(.94);animation:photoIn 1s var(--ease) .2s forwards;}
+.photo-shell{position:relative;opacity:0;transform:translateY(40px) scale(.94);animation:photoIn 1.5s var(--ease) .3s forwards;}
 .photo-shell img{
   width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;
   border-radius:16px;display:block;filter:grayscale(12%) contrast(1.02);
@@ -179,12 +179,12 @@ header::after{
 }
 .hero-photo .frame{
   position:absolute;inset:12px -12px -12px 12px;border:1.5px solid rgba(31,68,255,.4);
-  border-radius:18px;z-index:0;opacity:0;animation:frameIn .9s var(--ease) .55s forwards;
+  border-radius:18px;z-index:0;opacity:0;animation:frameIn 1.2s var(--ease) .85s forwards;
 }
 .photo-stats{
   display:flex;margin-top:1.5rem;border:1px solid var(--line);
   border-radius:12px;overflow:hidden;background:var(--surface);
-  opacity:0;animation:photoIn .8s var(--ease) .6s forwards;
+  opacity:0;animation:photoIn 1.2s var(--ease) .95s forwards;
 }
 .ps{flex:1;text-align:center;padding:.9rem .4rem;}
 .ps + .ps{border-left:1px solid var(--line);}
@@ -332,14 +332,40 @@ footer p,footer a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#
 footer a:hover{color:#8aa0ff;}
 
 /* ── coverage band ───────────────────────── */
-.coverage-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);padding:1.05rem var(--gutter);}
-.coverage-band .wrap{display:flex;align-items:center;justify-content:center;gap:1.3rem;flex-wrap:wrap;}
-.cov-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;}
-.cov-label::before{content:'';width:18px;height:1px;background:var(--accent);}
-.cov-items{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--ink-2);letter-spacing:.01em;}
-.cov-items .sep{color:var(--faint);margin:0 .15rem;}
-.cov-items .std{color:var(--signal);}
-@media(max-width:620px){.coverage-band .wrap{flex-direction:column;gap:.5rem;text-align:center;}.cov-items{font-size:.68rem;}}
+.coverage-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);padding:1.1rem var(--gutter);}
+.coverage-band .wrap{display:flex;align-items:center;justify-content:center;gap:.9rem 2.4rem;flex-wrap:wrap;}
+.cov-group{display:inline-flex;align-items:center;gap:.7rem;}
+.cov-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;}
+.cov-tag::before{content:'';width:8px;height:8px;border-radius:2px;}
+.cov-tag.auto{color:var(--accent);}.cov-tag.auto::before{background:var(--accent);}
+.cov-tag.ot{color:var(--signal);}.cov-tag.ot::before{background:var(--signal);}
+.cov-tag.dev{color:#8b5cf6;}.cov-tag.dev::before{background:#8b5cf6;}
+.cov-items{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink-2);letter-spacing:.01em;}
+@media(max-width:760px){
+  .coverage-band .wrap{flex-direction:column;align-items:flex-start;gap:.7rem;}
+  .cov-group{flex-wrap:wrap;gap:.3rem .7rem;}
+  .cov-items{font-size:.68rem;}
+}
+
+/* ── lifecycle flow (end to end) ─────────── */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:1.3rem;margin-top:1.9rem;}
+.step{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.1rem;transition:box-shadow .28s,transform .28s;}
+.step:hover{box-shadow:0 10px 30px rgba(11,15,26,.08);transform:translateY(-3px);}
+.step::after{content:'\203A';position:absolute;right:-.92rem;top:50%;transform:translateY(-50%);color:var(--faint);font-size:1.3rem;font-family:'JetBrains Mono',monospace;z-index:2;line-height:0;}
+.step:last-child::after{display:none;}
+.step-no{font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.08em;color:var(--accent);}
+.step h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;line-height:1.2;margin:.5rem 0 .4rem;}
+.step p{font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.01em;line-height:1.5;}
+@media(max-width:860px){.flow{grid-template-columns:1fr 1fr;gap:.9rem;}.step::after{display:none;}}
+@media(max-width:480px){.flow{grid-template-columns:1fr;}}
+
+/* ── how i work (inline) ─────────────────── */
+.howiwork-line{margin-top:2.3rem;padding-top:1.7rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:1.3rem;flex-wrap:wrap;}
+.hw-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;}
+.hw-label::before{content:'';width:18px;height:1px;background:var(--accent);}
+.hw-items{font-family:'Hanken Grotesk',sans-serif;font-size:.9rem;color:var(--ink-2);font-weight:400;text-align:center;}
+.hw-items .sep{color:var(--faint);margin:0 .45rem;}
+@media(max-width:720px){.howiwork-line{flex-direction:column;gap:.7rem;}.hw-items{font-size:.84rem;}}
 
 /* ── case studies ────────────────────────── */
 .cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
@@ -392,11 +418,11 @@ footer a:hover{color:#8aa0ff;}
 @media(max-width:820px){.tst-grid{grid-template-columns:1fr;}}
 
 /* ── reveal ──────────────────────────────── */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease);}
 .reveal.in{opacity:1;transform:none;}
-.reveal.d1{transition-delay:.08s;}
-.reveal.d2{transition-delay:.16s;}
-.reveal.d3{transition-delay:.24s;}
+.reveal.d1{transition-delay:.18s;}
+.reveal.d2{transition-delay:.36s;}
+.reveal.d3{transition-delay:.54s;}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none !important;transition:none !important;}
@@ -428,20 +454,20 @@ footer a:hover{color:#8aa0ff;}
 <header>
   <div class="hero">
     <div class="hero-text">
-      <div class="eyebrow reveal in">Principal Cyber Consultant · Thales</div>
-      <h1 class="reveal in d1">Cybersecurity,<br>engineered <em>in</em> —<br>not bolted on.</h1>
-      <p class="hero-tagline reveal in d2">
+      <div class="eyebrow reveal">Principal Cyber Consultant · Thales</div>
+      <h1 class="reveal d1">Cybersecurity,<br>engineered <em>in</em> —<br>not bolted on.</h1>
+      <p class="hero-tagline reveal d2">
         12+ years helping OEMs, Tier-1 suppliers, and critical-infrastructure operators turn
         regulation into resilient, certifiable engineering — across automotive and ICS/OT.
       </p>
-      <div class="std-row reveal in d2">
+      <div class="std-row reveal d2">
         <span class="code">ISO/SAE 21434</span>
         <span class="code">UNECE R155/R156</span>
         <span class="code">IEC 62443</span>
         <span class="code">AIS-189/190</span>
         <span class="code">CRA / RED</span>
       </div>
-      <div class="hero-actions reveal in d3">
+      <div class="hero-actions reveal d3">
         <a href="#services" class="btn btn-primary"><i class="fas fa-arrow-down"></i> See what I do</a>
         <a href="MaharajShreeKumar_Sood_Resume_2026.pdf" class="btn btn-ghost" download><i class="fas fa-download"></i> Resume</a>
       </div>
@@ -463,8 +489,9 @@ footer a:hover{color:#8aa0ff;}
 <!-- ── COVERAGE BAND ────────────────────────── -->
 <div class="coverage-band">
   <div class="wrap">
-    <span class="cov-label">Coverage</span>
-    <span class="cov-items">OEM <span class="sep">·</span> Tier-1 <span class="sep">·</span> Tier-2 <span class="sep">&nbsp;/&nbsp;</span> 2W <span class="sep">·</span> 4W <span class="sep">&nbsp;/&nbsp;</span> ICE <span class="sep">·</span> EV <span class="sep">&nbsp;/&nbsp;</span> <span class="std">R155 · R156 · AIS-189/190</span></span>
+    <div class="cov-group"><span class="cov-tag auto">Automotive</span><span class="cov-items">OEM · Tier-1 · Tier-2 · 2W · 4W · ICE · EV</span></div>
+    <div class="cov-group"><span class="cov-tag ot">OT / Industrial</span><span class="cov-items">SCADA · DCS · SIS · Level-1</span></div>
+    <div class="cov-group"><span class="cov-tag dev">Devices</span><span class="cov-items">ECU · Gateways · Firmware · IoT</span></div>
   </div>
 </div>
 
@@ -519,6 +546,28 @@ footer a:hover{color:#8aa0ff;}
         <p>Early-stage scoping, solution architecture, and bid support for complex cybersecurity tenders.</p>
         <div class="std">Scoping · Solution Architecture</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── END TO END (LIFECYCLE) ───────────────── -->
+<section class="section-paper" id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">End to end</div>
+      <h2 class="title reveal">Security across the whole lifecycle</h2>
+      <p class="lede reveal">Wherever you are — a fresh concept, a system mid-development, or a fleet already in the field — I can pick up the cybersecurity thread and carry it through to compliance and beyond.</p>
+    </div>
+    <div class="flow">
+      <div class="step reveal"><div class="step-no">01</div><h4>Assess</h4><p>TARA · risk &amp; gap analysis</p></div>
+      <div class="step reveal d1"><div class="step-no">02</div><h4>Architect</h4><p>security-by-design · controls</p></div>
+      <div class="step reveal d1"><div class="step-no">03</div><h4>Build &amp; harden</h4><p>secure development · firmware</p></div>
+      <div class="step reveal d2"><div class="step-no">04</div><h4>Validate</h4><p>pentest · Cyber FAT / SAT</p></div>
+      <div class="step reveal d2"><div class="step-no">05</div><h4>Comply &amp; sustain</h4><p>type approval · SUMS · updates</p></div>
+    </div>
+    <div class="howiwork-line reveal d1">
+      <span class="hw-label">How I work</span>
+      <span class="hw-items">Regulation → engineering translation <span class="sep">·</span> Stakeholder &amp; supplier alignment <span class="sep">·</span> Training &amp; enablement <span class="sep">·</span> Bid &amp; solution shaping</span>
     </div>
   </div>
 </section>
@@ -583,7 +632,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>A connected platform spanning multiple ECUs needed a defensible, vehicle-level risk picture before security requirements could be set.</dd></div>
           <div><dt>Approach</dt><dd>Ran structured TARA workshops across ECU, system, and vehicle layers; mapped attack paths and derived risk-rated security goals.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A prioritised security-requirement set the engineering and program teams could act on, feeding directly into the security concept. <em>[ add metric — e.g., N threats assessed across M ECUs ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A prioritised security-requirement set the engineering and program teams could act on, feeding directly into the security concept. <em>[ Analysed and Cyber Controlled 100+ Attack Scenarios ]</em></dd></div>
         </dl>
         <div class="cs-std">ISO/SAE 21434 · IEC 62443-3-2</div>
       </article>
@@ -594,7 +643,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>An OEM needed CSMS and SUMS frameworks in place to demonstrate UNECE R155/R156 readiness ahead of type approval.</dd></div>
           <div><dt>Approach</dt><dd>Built the management-system processes, prepared and validated the required cybersecurity work products, and ran a gap review against the regulation.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A complete, audit-ready work-product set aligned to R155/R156 and AIS-189/190. <em>[ add metric — e.g., readiness reached in N months ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A complete, audit-ready work-product set aligned to R155/R156 and AIS-189/190. <em>[ CSMS/SUMS Audit Readiness Stage in ~4 Year's ]</em></dd></div>
         </dl>
         <div class="cs-std">UNECE R155/R156 · AIS-189/190</div>
       </article>
@@ -605,7 +654,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>A process-industry operator needed to understand cyber risk across SCADA, DCS, and SIS without disrupting live operations.</dd></div>
           <div><dt>Approach</dt><dd>Performed an IEC 62443-aligned risk assessment and architecture review; defined zones and conduits and prioritised remediation.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A risk-ranked roadmap and segmentation plan that strengthened posture while keeping production running. <em>[ add metric — e.g., N findings, M prioritised ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A risk-ranked roadmap and segmentation plan that strengthened posture while keeping production running. <em>[ Multi Site's Assessed With Geographical Distribution ]</em></dd></div>
         </dl>
         <div class="cs-std">IEC 62443 (3-2, 4-1, 4-2) · NIST CSF</div>
       </article>
@@ -616,7 +665,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>Connected ECUs needed verifiable software integrity and a trustworthy update path, built in from concept rather than bolted on.</dd></div>
           <div><dt>Approach</dt><dd>Designed and validated secure boot, secure debug, and FOTA mechanisms through hands-on proof-of-concept; embedded the controls in the dev lifecycle.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A demonstrated secure-update chain and a reduced vulnerability surface ahead of production. <em>[ add metric — e.g., N vulnerabilities closed ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A demonstrated secure-update chain and a reduced vulnerability surface ahead of production. <em>[ Multiple Attack Scneraios Mapped from Connected to Gateway to PowerTrain ECU's ]</em></dd></div>
         </dl>
         <div class="cs-std">Secure Boot · FOTA · PKI</div>
       </article>
