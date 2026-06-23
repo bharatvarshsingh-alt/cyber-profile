@@ -194,7 +194,7 @@ header::after{
   font-size:.59rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:7px;line-height:1.35;}
 @keyframes photoIn{to{opacity:1;transform:translateY(0) scale(1);}}
 @keyframes frameIn{to{opacity:1;}}
-@media(max-width:820px){
+@media(max-width:600px){
   .hero{grid-template-columns:1fr;text-align:center;}
   .hero-photo{order:-1;max-width:250px;margin:0 auto 1rem;}
   .hero-photo .frame{display:none;}
@@ -273,7 +273,7 @@ section{padding:84px var(--gutter);}
 .pco{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.03em;margin-bottom:.55rem;display:inline-flex;align-items:center;gap:7px;}
 .pco .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#1bbf86;box-shadow:0 0 0 3px rgba(27,191,134,.18);}
 .pdesc{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.5;}
-@media(max-width:820px){
+@media(max-width:620px){
   .path{grid-template-columns:1fr;gap:0;}
   .path::before{top:6px;bottom:6px;left:6px;right:auto;width:2px;height:auto;}
   .pcol{flex-direction:column;align-items:flex-start;text-align:left;padding:0 0 1.9rem 1.7rem;}
@@ -349,14 +349,26 @@ footer a:hover{color:#8aa0ff;}
 
 /* ── lifecycle flow (end to end) ─────────── */
 .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:1.3rem;margin-top:1.9rem;}
-.step{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.1rem;transition:box-shadow .28s,transform .28s;}
+.step{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.1rem;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 .step:hover{box-shadow:0 10px 30px rgba(11,15,26,.08);transform:translateY(-3px);}
 .step::after{content:'\203A';position:absolute;right:-.92rem;top:50%;transform:translateY(-50%);color:var(--faint);font-size:1.3rem;font-family:'JetBrains Mono',monospace;z-index:2;line-height:0;}
 .step:last-child::after{display:none;}
-.step-no{font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.08em;color:var(--accent);}
-.step h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;line-height:1.2;margin:.5rem 0 .4rem;}
+.step.active{border-color:var(--accent);box-shadow:0 8px 26px rgba(31,68,255,.16);}
+.step.active::after{color:var(--accent);}
+.step-no{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.06em;color:var(--accent);background:var(--accent-wash);padding:2px 8px;border-radius:5px;transition:background .25s,color .25s;}
+.step.active .step-no{background:var(--accent);color:#fff;}
+.step h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;line-height:1.2;margin:.6rem 0 .4rem;}
 .step p{font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.01em;line-height:1.5;}
-@media(max-width:860px){.flow{grid-template-columns:1fr 1fr;gap:.9rem;}.step::after{display:none;}}
+.flow-hint{margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:center;}
+.flow-detail{margin-top:1.2rem;}
+.fdetail{display:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.7rem;}
+.fdetail.active{display:block;animation:fdfade .5s var(--ease);}
+.fd-no{font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.07em;color:var(--accent);text-transform:uppercase;}
+.fdetail h5{font-family:'Fraunces',serif;font-weight:500;font-size:1.18rem;line-height:1.25;margin:.4rem 0 1rem;}
+.fchips{display:flex;flex-wrap:wrap;gap:8px;}
+.fchip{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:6px 13px;}
+@keyframes fdfade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+@media(max-width:720px){.flow{grid-template-columns:1fr 1fr;gap:.9rem;}.step::after{display:none;}}
 @media(max-width:480px){.flow{grid-template-columns:1fr;}}
 
 /* ── how i work (inline) ─────────────────── */
@@ -388,6 +400,9 @@ footer a:hover{color:#8aa0ff;}
 .cs-pa dd{font-size:.85rem;color:var(--ink-2);font-weight:300;line-height:1.55;}
 .cs-pa .out dt{color:var(--accent);}
 .cs-pa .out dd{color:var(--ink);font-weight:400;}
+.cs-metric{display:flex;align-items:center;gap:8px;margin-top:.7rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;color:var(--accent);line-height:1.4;}
+.cs-metric i{font-size:.8rem;color:var(--accent);flex:none;}
+.cs.ot .cs-metric,.cs.ot .cs-metric i{color:var(--signal);}
 .cs-std{margin-top:auto;padding-top:.95rem;border-top:1px solid var(--line-soft);font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--signal);letter-spacing:.02em;}
 .cs.feature{grid-column:1 / -1;background:linear-gradient(180deg,#f6f8ff,var(--surface));}
 .cs.feature .cs-pa{flex-direction:row;gap:1.9rem;}
@@ -418,15 +433,19 @@ footer a:hover{color:#8aa0ff;}
 @media(max-width:820px){.tst-grid{grid-template-columns:1fr;}}
 
 /* ── reveal ──────────────────────────────── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
+.reveal{opacity:0;translate:0 30px;transition:opacity 1.4s var(--ease),translate 1.4s var(--ease);}
+.reveal.in{opacity:1;translate:0 0;}
 .reveal.d1{transition-delay:.18s;}
 .reveal.d2{transition-delay:.36s;}
 .reveal.d3{transition-delay:.54s;}
+/* keep hover/click feedback snappy on revealed interactive cards */
+.svc.reveal,.cs.reveal,.tst.reveal,.ins.reveal,.duo-card.reveal,.step.reveal,.cert.reveal{
+  transition:opacity 1.4s var(--ease),translate 1.4s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease),background .25s var(--ease);
+}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none !important;transition:none !important;}
-  .reveal{opacity:1;transform:none;}
+  .reveal{opacity:1 !important;transform:none !important;translate:none !important;}
   .photo-shell,.photo-stats{opacity:1 !important;transform:none !important;}
   .hero-photo .frame{opacity:1 !important;}
   html{scroll-behavior:auto;}
@@ -558,12 +577,40 @@ footer a:hover{color:#8aa0ff;}
       <h2 class="title reveal">Security across the whole lifecycle</h2>
       <p class="lede reveal">Wherever you are — a fresh concept, a system mid-development, or a fleet already in the field — I can pick up the cybersecurity thread and carry it through to compliance and beyond.</p>
     </div>
-    <div class="flow">
-      <div class="step reveal"><div class="step-no">01</div><h4>Assess</h4><p>TARA · risk &amp; gap analysis</p></div>
-      <div class="step reveal d1"><div class="step-no">02</div><h4>Architect</h4><p>security-by-design · controls</p></div>
-      <div class="step reveal d1"><div class="step-no">03</div><h4>Build &amp; harden</h4><p>secure development · firmware</p></div>
-      <div class="step reveal d2"><div class="step-no">04</div><h4>Validate</h4><p>pentest · Cyber FAT / SAT</p></div>
-      <div class="step reveal d2"><div class="step-no">05</div><h4>Comply &amp; sustain</h4><p>type approval · SUMS · updates</p></div>
+    <div class="flow" role="tablist" aria-label="Cybersecurity lifecycle phases">
+      <div class="step reveal active" role="tab" id="ph0" aria-controls="pd0" aria-selected="true" tabindex="0"><div class="step-no">01</div><h4>Assess</h4><p>TARA · risk &amp; gap analysis</p></div>
+      <div class="step reveal d1" role="tab" id="ph1" aria-controls="pd1" aria-selected="false" tabindex="-1"><div class="step-no">02</div><h4>Architect</h4><p>security-by-design · controls</p></div>
+      <div class="step reveal d1" role="tab" id="ph2" aria-controls="pd2" aria-selected="false" tabindex="-1"><div class="step-no">03</div><h4>Build &amp; harden</h4><p>secure development · firmware</p></div>
+      <div class="step reveal d2" role="tab" id="ph3" aria-controls="pd3" aria-selected="false" tabindex="-1"><div class="step-no">04</div><h4>Validate</h4><p>pentest · Cyber FAT / SAT</p></div>
+      <div class="step reveal d2" role="tab" id="ph4" aria-controls="pd4" aria-selected="false" tabindex="-1"><div class="step-no">05</div><h4>Comply &amp; sustain</h4><p>type approval · SUMS · updates</p></div>
+    </div>
+    <div class="flow-hint reveal">Select a phase to see what's involved</div>
+    <div class="flow-detail">
+      <div class="fdetail active" role="tabpanel" id="pd0" aria-labelledby="ph0" tabindex="0">
+        <div class="fd-no">01 · Assess</div>
+        <h5>Understand the risk before designing the fix</h5>
+        <div class="fchips"><span class="fchip">Vehicle &amp; ECU TARA</span><span class="fchip">Risk register</span><span class="fchip">Gap analysis · ISO 21434 / IEC 62443</span><span class="fchip">Threat modelling</span></div>
+      </div>
+      <div class="fdetail" role="tabpanel" id="pd1" aria-labelledby="ph1" tabindex="0">
+        <div class="fd-no">02 · Architect</div>
+        <h5>Turn risk into a concrete, defensible security design</h5>
+        <div class="fchips"><span class="fchip">Security concept</span><span class="fchip">Security goals &amp; requirements</span><span class="fchip">Zones &amp; conduits</span><span class="fchip">Reference architecture</span></div>
+      </div>
+      <div class="fdetail" role="tabpanel" id="pd2" aria-labelledby="ph2" tabindex="0">
+        <div class="fd-no">03 · Build &amp; harden</div>
+        <h5>Engineer the controls into the product, not around it</h5>
+        <div class="fchips"><span class="fchip">Secure boot &amp; debug</span><span class="fchip">Cryptography / PKI</span><span class="fchip">Secure firmware update</span><span class="fchip">MISRA / CERT-C</span></div>
+      </div>
+      <div class="fdetail" role="tabpanel" id="pd3" aria-labelledby="ph3" tabindex="0">
+        <div class="fd-no">04 · Validate</div>
+        <h5>Prove it holds up before it ships</h5>
+        <div class="fchips"><span class="fchip">Penetration testing</span><span class="fchip">Vulnerability assessment</span><span class="fchip">Cyber FAT / SAT</span><span class="fchip">Validation evidence</span></div>
+      </div>
+      <div class="fdetail" role="tabpanel" id="pd4" aria-labelledby="ph4" tabindex="0">
+        <div class="fd-no">05 · Comply &amp; sustain</div>
+        <h5>Carry it through approval and keep it secure in the field</h5>
+        <div class="fchips"><span class="fchip">CSMS / SUMS</span><span class="fchip">R155/R156 &amp; AIS-189/190 work products</span><span class="fchip">Monitoring &amp; response</span><span class="fchip">Security updates</span></div>
+      </div>
     </div>
     <div class="howiwork-line reveal d1">
       <span class="hw-label">How I work</span>
@@ -632,7 +679,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>A connected platform spanning multiple ECUs needed a defensible, vehicle-level risk picture before security requirements could be set.</dd></div>
           <div><dt>Approach</dt><dd>Ran structured TARA workshops across ECU, system, and vehicle layers; mapped attack paths and derived risk-rated security goals.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A prioritised security-requirement set the engineering and program teams could act on, feeding directly into the security concept. <em>[Analysed and Cyber Controlled 100+ Attack Scenarios ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A prioritised security-requirement set the engineering and program teams could act on, feeding directly into the security concept. <span class="cs-metric"><i class="fas fa-circle-check"></i> 100+ attack scenarios analysed &amp; cyber-controlled</span></dd></div>
         </dl>
         <div class="cs-std">ISO/SAE 21434 · IEC 62443-3-2</div>
       </article>
@@ -643,7 +690,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>An OEM needed CSMS and SUMS frameworks in place to demonstrate UNECE R155/R156 readiness ahead of type approval.</dd></div>
           <div><dt>Approach</dt><dd>Built the management-system processes, prepared and validated the required cybersecurity work products, and ran a gap review against the regulation.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A complete, audit-ready work-product set aligned to R155/R156 and AIS-189/190. <em>[CSMS/SUMS Audit Readiness Stage in ~4 Year's ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A complete, audit-ready work-product set aligned to R155/R156 and AIS-189/190. <span class="cs-metric"><i class="fas fa-circle-check"></i> CSMS/SUMS audit-readiness stage reached in ~4 years</span></dd></div>
         </dl>
         <div class="cs-std">UNECE R155/R156 · AIS-189/190</div>
       </article>
@@ -654,7 +701,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>A process-industry operator needed to understand cyber risk across SCADA, DCS, and SIS without disrupting live operations.</dd></div>
           <div><dt>Approach</dt><dd>Performed an IEC 62443-aligned risk assessment and architecture review; defined zones and conduits and prioritised remediation.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A risk-ranked roadmap and segmentation plan that strengthened posture while keeping production running. <em>[ Multi Site's Assessed With Geographical Distribution ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A risk-ranked roadmap and segmentation plan that strengthened posture while keeping production running. <span class="cs-metric"><i class="fas fa-circle-check"></i> Multiple geographically distributed sites assessed</span></dd></div>
         </dl>
         <div class="cs-std">IEC 62443 (3-2, 4-1, 4-2) · NIST CSF</div>
       </article>
@@ -665,7 +712,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>Connected ECUs needed verifiable software integrity and a trustworthy update path, built in from concept rather than bolted on.</dd></div>
           <div><dt>Approach</dt><dd>Designed and validated secure boot, secure debug, and FOTA mechanisms through hands-on proof-of-concept; embedded the controls in the dev lifecycle.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A demonstrated secure-update chain and a reduced vulnerability surface ahead of production. <em>[ Multiple Attack Scneraios Mapped from Connected to Gateway to PowerTrain ECU's ]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A demonstrated secure-update chain and a reduced vulnerability surface ahead of production. <span class="cs-metric"><i class="fas fa-circle-check"></i> Attack scenarios mapped: connected → gateway → powertrain ECUs</span></dd></div>
         </dl>
         <div class="cs-std">Secure Boot · FOTA · PKI</div>
       </article>
@@ -676,7 +723,7 @@ footer a:hover{color:#8aa0ff;}
         <dl class="cs-pa">
           <div><dt>Challenge</dt><dd>A complex cybersecurity programme tender (RFI / RFP / RFQ) needed a credible technical solution and a defensible scope before bid submission.</dd></div>
           <div><dt>Approach</dt><dd>Evaluated requirements, scoped the security solution architecture, and shaped the technical response alongside delivery and program teams.</dd></div>
-          <div class="out"><dt>Outcome</dt><dd>A structured, compliant proposal with a clear solution and effort estimate that engineering and commercial teams could stand behind. <em>[Diverse RFI/RFP Responsed forecasting to Bid Submission's]</em></dd></div>
+          <div class="out"><dt>Outcome</dt><dd>A structured, compliant proposal with a clear solution and effort estimate that engineering and commercial teams could stand behind. <span class="cs-metric"><i class="fas fa-circle-check"></i> Diverse RFI/RFP responses shaped from forecast to bid submission</span></dd></div>
         </dl>
         <div class="cs-std">RFI / RFP / RFQ · Solution Architecture · Project Scoping</div>
       </article>
@@ -864,6 +911,23 @@ document.addEventListener('DOMContentLoaded',()=>{
     }});
   },{threshold:.3,rootMargin:'-60px 0px -45% 0px'});
   secs.forEach(s=>navIo.observe(s));
+
+  // ── lifecycle phase tabs ──────────────────
+  const phaseTabs=document.querySelectorAll('.flow .step');
+  const phasePanels=document.querySelectorAll('.fdetail');
+  function setPhase(i,focus){
+    phaseTabs.forEach((t,j)=>{const on=j===i;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;});
+    phasePanels.forEach((p,j)=>p.classList.toggle('active',j===i));
+    if(focus&&phaseTabs[i])phaseTabs[i].focus();
+  }
+  phaseTabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>setPhase(i));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();setPhase(i);}
+      else if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();setPhase((i+1)%phaseTabs.length,true);}
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();setPhase((i-1+phaseTabs.length)%phaseTabs.length,true);}
+    });
+  });
 });
 if('scrollRestoration'in history)history.scrollRestoration='manual';
 addEventListener('beforeunload',()=>scrollTo(0,0));
