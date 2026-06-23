@@ -151,7 +151,9 @@ header::after{
   font-size:clamp(2.5rem,6vw,4.2rem);line-height:1.04;letter-spacing:-.02em;margin:1.3rem 0;
 }
 .hero h1 em{font-style:italic;color:var(--accent);}
-.hero-tagline{font-size:clamp(1.02rem,1.6vw,1.16rem);color:var(--ink-2);font-weight:300;max-width:48ch;margin-bottom:1.8rem;}
+.hero-tagline{font-size:clamp(1.02rem,1.6vw,1.16rem);color:var(--ink-2);font-weight:300;max-width:48ch;margin-bottom:.9rem;}
+.hero-plain{font-size:.95rem;color:var(--muted);font-weight:300;max-width:52ch;line-height:1.6;margin-bottom:1.8rem;}
+.hero-plain span{color:var(--accent);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:.76rem;letter-spacing:.02em;}
 .std-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:2.1rem;}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .btn{
@@ -202,6 +204,7 @@ header::after{
   .eyebrow{justify-content:center;}
   .std-row,.hero-actions{justify-content:center;}
   .hero-tagline{margin-inline:auto;}
+  .hero-plain{margin-inline:auto;}
 }
 
 /* ── section scaffold ────────────────────── */
@@ -229,6 +232,8 @@ section{padding:84px var(--gutter);}
 .svc h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.12rem;line-height:1.2;margin-bottom:.5rem;}
 .svc p{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.6;}
 .svc .std{margin-top:auto;padding-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--signal);letter-spacing:.02em;}
+.svc-benefit{margin-top:.7rem;font-size:.82rem;font-weight:500;color:var(--accent);line-height:1.5;display:flex;gap:7px;}
+.svc-benefit::before{content:'\2192';color:var(--accent);flex:none;}
 @media(max-width:880px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
 
@@ -330,6 +335,13 @@ section{padding:84px var(--gutter);}
 footer{background:#070a12;padding:1.5rem var(--gutter);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem;}
 footer p,footer a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#414b60;text-decoration:none;letter-spacing:.02em;}
 footer a:hover{color:#8aa0ff;}
+
+/* ── plain-english value line ────────────── */
+.plain-line{padding:3.2rem var(--gutter) 2.8rem;background:var(--surface);}
+.plain-line .wrap{max-width:780px;text-align:center;}
+.pl-tag{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem;}
+.plain-line p{font-family:'Hanken Grotesk',sans-serif;font-size:clamp(1.12rem,2.1vw,1.42rem);font-weight:300;line-height:1.55;color:var(--ink-2);}
+.plain-line p b{font-weight:600;color:var(--ink);}
 
 /* ── coverage band ───────────────────────── */
 .coverage-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);padding:1.1rem var(--gutter);}
@@ -477,8 +489,9 @@ footer a:hover{color:#8aa0ff;}
       <h1 class="reveal d1">Cybersecurity,<br>engineered <em>in</em> —<br>not bolted on.</h1>
       <p class="hero-tagline reveal d2">
         12+ years helping OEMs, Tier-1 suppliers, and critical-infrastructure operators turn
-        regulation into resilient, certifiable engineering — across automotive and ICS/OT.
+        regulation into resilient, certifiable engineering — across automotive and industrial systems (ICS/OT).
       </p>
+      <p class="hero-plain reveal d2"><span>In plain terms —</span> I help vehicle makers and industrial operators keep their connected products safe from attack, and meet the regulations that let them sell those products worldwide.</p>
       <div class="std-row reveal d2">
         <span class="code">ISO/SAE 21434</span>
         <span class="code">UNECE R155/R156</span>
@@ -528,6 +541,7 @@ footer a:hover{color:#8aa0ff;}
         <div class="ic"><i class="fas fa-magnifying-glass-chart"></i></div>
         <h3>TARA &amp; Risk Assessment</h3>
         <p>Vehicle- and component-level threat analysis with risk-driven security requirements your teams can act on.</p>
+        <p class="svc-benefit">so you find the gaps before attackers do.</p>
         <div class="std">ISO/SAE 21434 · IEC 62443-3-2</div>
       </div>
       <div class="svc reveal d1">
@@ -535,6 +549,7 @@ footer a:hover{color:#8aa0ff;}
         <div class="ic"><i class="fas fa-stamp"></i></div>
         <h3>Type Approval &amp; Homologation</h3>
         <p>CSMS/SUMS build-out, work-product validation, and audit readiness all the way to approval.</p>
+        <p class="svc-benefit">so your products clear regulation and reach market.</p>
         <div class="std">UNECE R155/R156 · AIS-189/190</div>
       </div>
       <div class="svc reveal d2">
@@ -542,6 +557,7 @@ footer a:hover{color:#8aa0ff;}
         <div class="ic"><i class="fas fa-compass-drafting"></i></div>
         <h3>Security Architecture</h3>
         <p>Security-by-design for connected ECUs and OT — from concept definition to system-level controls.</p>
+        <p class="svc-benefit">so security is built in, not bolted on.</p>
         <div class="std">Security-by-Design · PKI · Secure Boot</div>
       </div>
       <div class="svc reveal">
@@ -549,6 +565,7 @@ footer a:hover{color:#8aa0ff;}
         <div class="ic"><i class="fas fa-industry"></i></div>
         <h3>OT / ICS Programmes</h3>
         <p>End-to-end industrial security: gap analysis, segmentation, policy, and ongoing compliance.</p>
+        <p class="svc-benefit">so your plants stay running and protected.</p>
         <div class="std">IEC 62443 · NIST CSF · NERC-CIP</div>
       </div>
       <div class="svc reveal d1">
@@ -556,6 +573,7 @@ footer a:hover{color:#8aa0ff;}
         <div class="ic"><i class="fas fa-vial-circle-check"></i></div>
         <h3>Pen Testing &amp; Cyber FAT/SAT</h3>
         <p>ECU-level penetration testing and OT cyber-validation during factory and site acceptance.</p>
+        <p class="svc-benefit">so flaws surface in the lab, not the field.</p>
         <div class="std">VAPT · Cyber FAT · Cyber SAT</div>
       </div>
       <div class="svc reveal d2">
@@ -563,6 +581,7 @@ footer a:hover{color:#8aa0ff;}
         <div class="ic"><i class="fas fa-file-signature"></i></div>
         <h3>Advisory &amp; RFI/RFP Support</h3>
         <p>Early-stage scoping, solution architecture, and bid support for complex cybersecurity tenders.</p>
+        <p class="svc-benefit">so you go to bid with a solution that wins.</p>
         <div class="std">Scoping · Solution Architecture</div>
       </div>
     </div>
